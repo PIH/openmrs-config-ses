@@ -9,7 +9,8 @@
     "myAccount",
     "patientRegistration",
     "systemAdministration",
-    "visitManagement"
+    "visitManagement",
+    "vitals"
   ],
   "scheduleBackupReports": "false",
   "dashboardUrl": "/coreapps/clinicianfacing/patient.page?patientId={{patientId}}&app=pih.app.clinicianDashboard",
