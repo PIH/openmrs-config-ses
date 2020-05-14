@@ -1,10 +1,6 @@
 <config>
     <globalProperties>
         <globalProperty>
-            <property>addresshierarchy.i18nSupport</property>
-            <value>true</value>
-        </globalProperty>
-        <globalProperty>
             <!-- note tht default locale must be set before changing the allowed list -->
             <property>default_locale</property>
             <value>es</value>
