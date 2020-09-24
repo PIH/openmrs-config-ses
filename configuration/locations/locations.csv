@@ -1,3 +1,13 @@
-Uuid,Void/Retire,Name,Description,Parent,Tags,Address1,Address2,Address3,Address4,Address5,Address6,City/Village,County/District,State/Province,Postal Code,Country
-48f7f4e1-a473-4b54-a2fa-4e9be2915388,,Peru,"The country of Peru, where SES operates",,Identifier Assignment Location,,,,,,,,,,,
-79e3613f-fc06-4999-b1b4-bdefdc89184d,,Hospital,,Peru,Login Location; Consult Note Location; Registration Location; Visit Location; Vitals Location; Medical Record Location,,,,,,,,,,,
+Uuid,Void/Retire,Name,Description,Parent,Tag|Login Location,Tag|Facility Location,Address 1,Address 2,Address 3,Address 4,Address 5,Address 6,City/Village,County/District,State/Province,Postal Code,Country,Tags
+48f7f4e1-a473-4b54-a2fa-4e9be2915388,,Peru,,,,,,,,,,,,,,,,Identifier Assignment Location
+79e3613f-fc06-4999-b1b4-bdefdc89184d,,Consultorio Oscar Romero (COR),,Peru,TRUE,TRUE,Av. Los Constructores 1230,,,,,,Lima,Lima,Lima,15012,Peru,Login Location;Visit Location;Vitals Location;Medical Record Location;Consult Note Location;Registration Location
+,,RX Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Mb Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,RX Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Mb Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Admission,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Topic,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Sampling Area,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Sputum Collection Area,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Warehouse,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
+,,Medical Consultants,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,Facility Location
