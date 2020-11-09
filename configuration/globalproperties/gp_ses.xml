@@ -15,12 +15,24 @@
         </globalProperty>
         <globalProperty>
             <property>emr.concept.diagnosisSetOfSets</property>
-            <!-- **Mexico** diagnosis set of sets, likely we want to update this -->
+            <!-- **Mexico** diagnosis set of sets - TODO create Peru Dx concept set -->
             <value>7fd1dd5a-ab2d-43cd-aedb-e0d6bb81f8bf</value>
         </globalProperty>
         <globalProperty>
             <property>log.level</property>
             <value>org.openmrs.api:warn</value>
+        </globalProperty>
+
+        <!-- 'labs' component -->
+        <globalProperty>
+            <property>orderentryowa.labOrderablesConceptSet</property>
+            <!-- Concept: Liberia laboratory categories - TODO create Peru lab concept set -->
+            <value>d75d3f5b-6777-41cf-ad9f-dce07a577eb3</value>
+        </globalProperty>
+        <globalProperty>
+            <property>labworkflowowa.locationOfLaboratory</property>
+            <!-- Consultorio Oscar Romero (COR) -->
+            <value>79e3613f-fc06-4999-b1b4-bdefdc89184d</value>
         </globalProperty>
     </globalProperties>
 </config>
