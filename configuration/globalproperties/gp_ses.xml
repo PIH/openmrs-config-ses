@@ -31,8 +31,10 @@
         </globalProperty>
         <globalProperty>
             <property>labworkflowowa.locationOfLaboratory</property>
-            <!-- Consultorio Oscar Romero (COR) -->
-            <value>79e3613f-fc06-4999-b1b4-bdefdc89184d</value>
+            <!-- This should be the concept for a question like "Location of Laboratory."
+                See e.g. PIH:12868. If lab location is not a piece of data we want to collect
+                in Peru, we could change the Labs OWA to make this GP completely optional. -->
+            <value>not-using-this-yet</value>
         </globalProperty>
     </globalProperties>
 </config>
