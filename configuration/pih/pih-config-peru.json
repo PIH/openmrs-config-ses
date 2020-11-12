@@ -6,11 +6,16 @@
   "components": [
     "allergies",
     "clinicianDashboard",
+    "conditionList",
+    "consult",
+    "hiv",
     "labs",
     "myAccount",
     "patientRegistration",
+    "programs",
     "systemAdministration",
     "visitManagement",
+    "visitNote",
     "vitals"
   ],
   "scheduleBackupReports": "false",
@@ -20,7 +25,7 @@
   "providerIdentifierPrefix": "P",
   "primaryIdentifierPrefix": "SES",
   "addressConfig": {
-    "manualFields": ["address1", "address2", "address3"],
+    "manualFields": ["address1"],
     "shortcutField": "cityVillage"
   },
   "registrationConfig": {
@@ -30,29 +35,11 @@
     "similarPatientsSearch": {
       "addressFields": {
         "countyDistrict": "1",
-        "cityVillage": "1",
-        "address2": "1"
+        "cityVillage": "1"
       },
       "personAttributeTypes": {
         "First Name of Mother": "3",
         "Telephone Number": "20"
-      }
-    },
-    "social": {
-      "activeCasefinding": {
-        "required": false
-      },
-      "canRead": {
-        "required": false
-      },
-      "isDisabled": {
-        "required": false
-      },
-      "isImmigrant": {
-        "required": false
-      },
-      "isIndigenous": {
-        "required": false
       }
     }
   },
