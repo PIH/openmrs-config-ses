@@ -1,0 +1,192 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+
+<htmlform id="primary-care-exam-form"
+          formUuid="b34b71f4-03f1-11e5-8418-1697f925ec7b"
+          formName="Examen physique"
+          formVersion="1.0">
+
+    <style type="text/css">
+        <ifMode mode="VIEW" include="false">
+
+            #data-collection {
+                display: inline-block;
+                width: 58%;
+                vertical-align: top;
+            }
+
+            #primary-care-exam input[type="checkbox"] {
+                margin: 0px 5px;  /* changed values to vertical, horizontal */
+                top:5px;          /* added to offset the checkbox position to line up */
+            }
+
+            .section-container-color {
+                background: #F2F2F2;
+                box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+                padding: 10px 5px 10px 15px;
+                line-height: 1.5em; /*add this for vertical spacing between elements*/
+            }
+
+           - .section {
+                width: 100%;
+           }
+
+            .section-container input[type="checkbox"] {
+                margin: 0px 5px; /* changed values to vertical, horizontal */
+                top:5px;         /* added to offset the checkbox position to line up */
+            }
+
+
+            form input[type="radio"], .form input[type="radio"] {
+                float: none;
+                display: inline-block;
+            }
+
+            .tanner label {
+                display: inline-block;
+            }
+
+            .section-container label { /*new definition to override labels inside section-containers*/
+                margin: 0px;
+            }
+
+            .two-columns {
+                column-count: 2;
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+            }
+        </ifMode>
+    </style>
+
+    <style type="text/css">
+        <ifMode mode="VIEW" include="true">
+
+            #primary-care-exam-form legend {
+                display: none;
+            }
+
+            #primary-care-exam-form fieldset {
+                margin: 0px;
+                border: 0px;
+                padding: 0px;
+            }
+
+            #primary-care-exam-form fieldset h3 {
+                font-size: 1em;
+                width: 200px;
+                display: inline-block;
+                margin: 0px;
+                margin-right: 10px;
+                color: #501d3d;
+                vertical-align: top;
+            }
+
+            #primary-care-exam-form fieldset p {
+                vertical-align: top;
+                display: inline-block;
+                float: none;
+            }
+
+            #primary-care-exam-form fieldset .left {
+                vertical-align: top;
+                display: inline-block;
+                float: none;
+            }
+
+            #primary-care-exam-form .title {
+                display: none;
+            }
+
+            #primary-care-exam-form .encounter-date {
+                display: none;
+            }
+
+            #primary-care-exam-form .encounter-provider {
+                display: none;
+            }
+
+            #primary-care-exam-form .encounter-location {
+                display: none;
+            }
+
+            #primary-care-exam-form .comment-label {
+                display: none;
+            }
+            #primary-care-exam-form .comment-field {
+                display: block;
+                margin-left: 215px;
+            }
+            #primary-care-exam-form br {
+                display: none;
+            }
+        </ifMode>
+    </style>
+
+    <ifMode mode="VIEW" include="false">
+        <h3>
+            <uimessage code="pihcore.exam.title"/>
+        </h3>
+
+        <script type="text/javascript">
+            jq(document).ready(function() {
+
+                // handle our custom functionality for triggering going to the next section when the "Next" button is clicked
+                jq('#next').click(function() {
+                    window.htmlForm.getBeforeSubmit().push(function () {
+                    window.htmlForm.setReturnUrl(window.htmlForm.getReturnUrl() + "&amp;goToNextSection=physical-exam");
+                    return true;
+                });
+
+                window.htmlForm.submitHtmlForm();
+                })
+
+                jq('#submit').click(function() {
+                    window.htmlForm.submitHtmlForm();
+                })
+
+            });
+        </script>
+    </ifMode>
+
+    <div class="physical-exam">
+        <div class="section-container-color">
+            <h3 id="general">
+                <uimessage code="pihcore.exam.general_exam.title"/>
+            </h3>
+
+            <obs conceptId="CIEL:160531" labelCode="pihcore.chiefComplaint.title" />
+
+        </div>
+
+    </div>
+
+    <br/>
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <button id="next" type="button" class="submitButton confirm right">
+                <uimessage code="emr.next"/>
+                <i class="icon-spinner icon-spin icon-2x" style="display: none; margin-left: 10px;"></i>
+            </button>
+            <button id="submit" class="submitButton confirm right">
+                <uimessage code="mirebalais.save"/>
+                <i class="icon-spinner icon-spin icon-2x" style="display: none; margin-left: 10px;"></i>
+            </button>
+            <button id="cancel" type="button" class="cancel">
+                <uimessage code="emr.cancel"/>
+            </button>
+        </div>
+    </ifMode>
+
+</htmlform>
