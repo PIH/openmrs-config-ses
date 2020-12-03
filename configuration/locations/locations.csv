@@ -1,13 +1,13 @@
-Uuid,Void/Retire,Name,Description,Parent,Tag|Identifier Assignment Location,Tag|Login Location,Tag|Visit Location,Tag|Vitals Location,Tag|Medical Record Location,Tag|Consult Note Location,Tag|Registration Location,Address 1,Address 2,Address 3,Address 4,Address 5,Address 6,City/Village,County/District,State/Province,Postal Code,Country
-48f7f4e1-a473-4b54-a2fa-4e9be2915388,,Peru,,,,,,,,,,,,,,,,,,,,
-79e3613f-fc06-4999-b1b4-bdefdc89184d,,Consultorio Oscar Romero (COR),,Peru,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Av. Los Constructores 1230,,,,,,Lima,Lima,Lima,15012,Peru
-9762ed75-3a36-4058-a719-a476539d2812,,RX Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-375d3942-af62-4716-bd74-55595152e932,,Mb Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-035ccca9-fe98-4f79-bd58-62dafaaf6357,,RX Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-17cb2b27-3a60-43ed-97cc-2308a6b12610,,Mb Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-9e3fa427-47ae-4339-9f6a-3cb0cad6cfc4,,Admission,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-f3f8509d-35ba-4dcb-8a0b-2b9ebf165d9a,,Topic,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-cde4f5a4-91e9-48cc-b7be-4ce1a04bd771,,Sampling Area,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-84ecb267-a85c-4af3-b066-f2929a510fbf,,Sputum Collection Area,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-60480edc-74d4-43e8-9959-2c65082c4b4c,,Warehouse,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
-93bd2f83-28cb-4e0a-aeea-9cb2bbcceaec,,Medical Consultants,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,,,,,,,,,,
+Uuid,Void/Retire,Name,Description,Parent,Tag|Identifier Assignment Location,Tag|Login Location,Tag|Visit Location,Tag|Vitals Location,Tag|Medical Record Location,Tag|Consult Note Location,Tag|Registration Location,Tag|HIV Consult Location,Tag|COVID-19 Location,Address 1,Address 2,Address 3,Address 4,Address 5,Address 6,City/Village,County/District,State/Province,Postal Code,Country
+48f7f4e1-a473-4b54-a2fa-4e9be2915388,,Peru,,,,,,,,,,,"",,,,,,,,,,,
+79e3613f-fc06-4999-b1b4-bdefdc89184d,,Consultorio Oscar Romero (COR),,Peru,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Av. Los Constructores 1230,,,,,,Lima,Lima,Lima,15012,Peru
+9762ed75-3a36-4058-a719-a476539d2812,,RX Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+375d3942-af62-4716-bd74-55595152e932,,Mb Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+035ccca9-fe98-4f79-bd58-62dafaaf6357,,RX Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+17cb2b27-3a60-43ed-97cc-2308a6b12610,,Mb Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+9e3fa427-47ae-4339-9f6a-3cb0cad6cfc4,,Admission,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+f3f8509d-35ba-4dcb-8a0b-2b9ebf165d9a,,Topic,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+cde4f5a4-91e9-48cc-b7be-4ce1a04bd771,,Sampling Area,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+84ecb267-a85c-4af3-b066-f2929a510fbf,,Sputum Collection Area,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+60480edc-74d4-43e8-9959-2c65082c4b4c,,Warehouse,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
+93bd2f83-28cb-4e0a-aeea-9cb2bbcceaec,,Medical Consultants,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
