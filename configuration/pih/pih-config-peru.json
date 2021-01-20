@@ -4,11 +4,13 @@
   "country": "PERU",
   "site": "PERU",
   "components": [
+    "allDataExports",
     "allergies",
     "clinicianDashboard",
     "conditionList",
     "consult",
     "covid19IntakeForm",
+    "dataExports",
     "hiv",
     "labs",
     "myAccount",
