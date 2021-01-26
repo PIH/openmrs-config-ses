@@ -4,7 +4,6 @@
   "country": "PERU",
   "site": "PERU",
   "components": [
-    "allDataExports",
     "allergies",
     "clinicianDashboard",
     "conditionList",
