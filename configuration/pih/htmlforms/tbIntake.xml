@@ -1,5 +1,297 @@
 <htmlform formUuid="4590c1f68-d55a-4415-a83b-cbd9fc4a4b7a"
           formEncounterType="aa42cc6c-b9ee-4850-926c-dda4bb14d890"
           formName="SES TB Intake" formVersion="1.0">
+    <postSubmissionAction class="org.openmrs.module.pihcore.htmlformentry.action.ApplyDispositionAction"/>
+
+    <style type="text/css">
+
+        #who-when-where {
+            margin-bottom: 6px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #who-when-where p {
+            display: inline-block;
+            padding-right: 20px;
+        }
+
+        #where > input[type=text] {
+            display: inline-block;
+        }
+
+        .narrow {
+            width: 200px;
+        }
+
+        .field-error {
+            color: #ff6666;
+            font-size: 1.1em;
+            display: block;
+        }
+
+        .simple-form-ui input {
+            min-width: 90%
+        }
+
+        form fieldset {
+            min-width: 90%
+        }
+
+        #encounterDate input {
+            min-width: 15%
+        }
+
+        .section-container {
+            background: #F2F2F2;
+            box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+            padding: 10px 5px 10px 15px;
+            line-height: 1.5em; /*add this for vertical spacing between elements*/
+        }
+
+        .section-container input[type="checkbox"] {
+            margin: 0px 5px; /*changed values to vertical, horizontal*/
+            top:5px; /*added to offset the checkbox position to line up*/
+        }
+
+        .section-container label { /*new definition to override labels inside section-containers*/
+            margin: 0px;
+        }
+
+        .section {
+            width: 100%;
+        }
+
+        .two-columns {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .two-columns > div {
+            display: table-cell;
+            width: 50%;
+        }
+
+        form input[type="checkbox"], form input[type="radio"],
+        .form input[type="checkbox"], .form input[type="radio"] {
+            float: none;
+            display: inline-block;
+        }
+
+        form label, .form label {
+            display: inline-block;
+        }
+
+        #data-collection {
+            display: inline-block;
+            width: 58%;
+            vertical-align: top;
+        }
+
+        #encounter-diagnoses-target {
+            display: inline-block;
+            width: 40%;
+            vertical-align: top;
+        }
+
+        #encounter-diagnoses-app {
+            margin-bottom: 20px;
+        }
+
+        form fieldset {
+            display: block;
+        }
+    </style>
+          
+    <ifMode mode="VIEW" include="false">
+        <script type="text/javascript">
+
+        </script>
+    </ifMode>
+    <div id="who-when-where">
+        <p id="who">
+            <label><uimessage code="emr.patientDashBoard.providerRequired"/></label>
+            <span><encounterProviderAndRole default="currentUser" encounterRole="4f10ad1a-ec49-48df-98c7-1391c6ac7f05" required="true"/></span>
+        </p>
+        <p id="where">
+            <label><uimessage code="emr.locationRequired"/></label>
+            <span><encounterLocation default="SessionAttribute:emrContext.sessionLocationId" tags="Primary Care Consult Location"/></span>
+        </p>
+        <p id="when">
+        <label><uimessage code="emr.patientDashBoard.date"/></label>
+        <span><encounterDate id="encounterDate" default="now" /></span>
+        </p>
+    </div>
+
+    <div class="print-form-datestamps" style="display:none">
+        <p><uimessage code="pih.form.created_on"/>:
+            <lookup complexExpression="$form.dateCreated"/>
+        </p>
+        <p><uimessage code="pih.form.last_updated_on"/>:
+            <lookup complexExpression="$form.dateChanged"/>
+        </p>
+        <p><uimessage code="pih.form.printed_on"/>:
+            <lookup complexExpression="$formGeneratedDatetime"/>
+        </p>
+    </div>
+
+    <section id="bk-test" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.smear">
+        <div class="section-container">
+            <p>
+                <obs conceptId="CIEL:307"
+                     answerConceptIds="CIEL:664,CIEL:1362,CIEL:1363,CIEL:1364"
+                     labelText="Escoger el resultado"
+                     dateLabel="Fecha del resultado"
+                     answerLabels="Negativo,1+,2+,3+"
+                     showDate="true"/>
+            </p>
+
+        </div>
+    </section>
+
+    <section id="culture" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.culture">
+        <div class="section-container">
+            <label>
+                Escoger el resultado
+            </label>
+            <p>
+                <obs conceptId="CIEL:307"
+                     dateLabel="Fecha del cultivo"
+                     answerConceptIds="CIEL:1364,CIEL:664"
+                     answerLabels="Positivo,Negativo"
+                     style="radio"
+                     showDate="true"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="type-TB" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.typeTB">
+        <div class="section-container">
+            <label>
+                ¿Cual es el tipo?
+            </label>
+            <p>
+                <obs conceptId="CIEL:160040"
+                     answerConceptIds="CIEL:42,CIEL:5042"
+                     answerLabels="Tuberculosis Pulmonar,Tuberculosis Extra-pulmonar"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="latent" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.latentTB">
+        <div class="section-container">
+            <p>
+                <obs conceptId="PIH:13313"
+                     answerConceptIds="CIEL:1065,CIEL:1066"
+                     answerLabels="Si,No"
+                     style="radio"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="ds" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.ds">
+        <div class="section-container">
+            <p>
+                <obs conceptId="CIEL:164368"
+                     answerConceptIds="CIEL:126745,PIH:13314,CIEL:164367,CIEL:159345,CIEL:159346"
+                     answerLabels="Sensibilidad,Monoresistente,Polidrogas resistentes,Resistente a múltiples fármacos,Extrema resistente a los medicamentos"
+                     labelText="Resultado de examen"
+                     dateLabel="Fecha de examen"
+                     showDate="true"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="rx" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.rx">
+        <div class="section-container">
+            <p>
+                <obs conceptId="CIEL:12"
+                     answerConceptIds="CIEL:1115,CIEL:1116"
+                     answerLabels="Normal,Anormal"
+                     labelText="Resultado"
+                     dateLabel="Fecha del examen"
+                     showDate="true"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="case" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.case">
+        <div class="section-container">
+            <p>
+                <obs conceptId="CIEL:164181"
+                     answerConceptIds="PIH:6964,PIH:7383"
+                     answerLabels="Nuevo,Caso previamente tratado"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="index" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.index">
+        <div class="section-container">
+            <p>
+                <obs conceptId="PIH:13315"
+                     answerConceptIds="PIH:11558,CIEL:162633"
+                     answerLabels="Index,Contacto de caso potencial"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="tb-schema" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.tbSchema">
+        <div class="section-container">
+            <p>
+                <obs conceptId="PIH:13154"
+                     answerConceptIds="CIEL:159943,CIEL:159944"
+                     answerLabels="Primario,Secundario"
+                     style="radio"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="tb-phase" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.tbTPhase">
+        <div class="section-container">
+            <p>
+                <obs conceptId="CIEL:159792"
+                     answerConceptIds="CIEL:159795,CIEL:159794"
+                     answerLabels="Fase 1,Fase 2"
+                     style="radio"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="comorbity-hiv" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.comorbityHIV">
+        <div class="section-container">
+            <label>
+                <uimessage code="¿Presenta comorbilidad de VIH?"/>
+            </label>
+            <p>
+                <obs conceptId="CIEL:138405"
+                     answerConceptIds="CIEL:1065,CIEL:1066"
+                     answerLabels="Sí,No"
+                     style="radio"/>
+            </p>
+        </div>
+    </section>
+
+    <section id="ram" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.tbintake.ram">
+        <div class="section-container">
+            <label>
+                Severidad de reacción
+            </label>
+            <p>
+                <obs conceptId="CIEL:162760"
+                     answerConceptIds="CIEL:1498,CIEL:1499,CIEL:1500"
+                     answerLabels="Medio,Moderado,Severo"
+                     style="radio"/>
+            </p>
+        </div>
+    </section>
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="mirebalais.save"/>
+            <button type="button" class="cancel">
+                <uimessage code="emr.cancel"/>
+            </button>
+        </div>
+    </ifMode>
 
 </htmlform>
