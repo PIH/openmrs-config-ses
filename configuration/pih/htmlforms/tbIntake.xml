@@ -265,7 +265,7 @@
             <p>
                 <obs conceptId="CIEL:138405"
                      answerConceptIds="CIEL:1065,CIEL:1066"
-                     answerLabels="Si,No"
+                     answerLabels="Sí,No"
                      style="radio"/>
             </p>
         </div>
