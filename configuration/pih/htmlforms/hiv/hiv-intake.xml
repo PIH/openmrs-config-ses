@@ -257,7 +257,7 @@
         <section id="westerblot" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.wesblot">
             <div class="section-container">
                 <p>
-                    <obs conceptId ="CIEL:1047"
+                    <obs conceptId="CIEL:1047"
                          answerConceptIds="CIEL:703,CIEL:664,CIEL:1138"
                          answerLabels="Positivo,Negativo,Indeterminado">
                     </obs>
