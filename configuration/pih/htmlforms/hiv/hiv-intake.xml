@@ -247,10 +247,9 @@
         <section id="elisa" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.elisa">
             <div class="section-container">
                 <p>
-                    <obs conceptId ="CIEL:1042"
+                    <obs conceptId="CIEL:1042"
                     answerConceptIds="CIEL:703,CIEL:664"
-                    answerLabels="Positivo,Negativo">
-                    </obs>
+                    answerLabels="Positivo,Negativo" />
                 </p>
             </div>
         </section>
@@ -355,4 +354,3 @@
     </div>
 
 </htmlform>
-
