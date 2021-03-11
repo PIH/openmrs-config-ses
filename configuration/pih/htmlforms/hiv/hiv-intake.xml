@@ -288,7 +288,6 @@
                 <p>
                     <obs conceptId ="CIEL:159382"
                          answerConceptIds="CIEL:1065,CIEL:1066"
-                         answerLabels="Si,No"
                          style="radio">
                     </obs>
                 </p>
@@ -312,7 +311,6 @@
             <div class="section-container">
                 <p>
                     <obs conceptId ="CIEL:42"
-                         answerLabels="Sí,NO"
                         style="yes_no">
                     </obs>
                 </p>
@@ -336,7 +334,6 @@
                 <p>
                     <obs conceptId ="PIH:Regimen failed"
                          answerConceptIds="CIEL:1065,CIEL:1066"
-                         answerLabels="Si,No"
                          style="radio">
                     </obs>
                 </p>
