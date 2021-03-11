@@ -27,6 +27,79 @@
         display: block;
         }
 
+        .simple-form-ui input {
+        min-width: 90%
+        }
+
+        form fieldset {
+        min-width: 90%
+        }
+
+        #encounterDate input {
+        min-width: 15%
+        }
+
+        .section-container {
+        background: #F2F2F2;
+        box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+        padding: 10px 5px 10px 15px;
+        line-height: 1.5em; /*add this for vertical spacing between elements*/
+        }
+
+        .section-container input[type="checkbox"] {
+        margin: 0px 5px; /*changed values to vertical, horizontal*/
+        top:5px; /*added to offset the checkbox position to line up*/
+        }
+
+        .section-container label { /*new definition to override labels inside section-containers*/
+        margin: 0px;
+        }
+
+        .section {
+        width: 100%;
+        }
+
+        .two-columns {
+        display: table;
+        height: 100%;
+        width: 100%;
+        }
+
+        .two-columns > div {
+        display: table-cell;
+        width: 50%;
+        }
+
+        form input[type="checkbox"], form input[type="radio"],
+        .form input[type="checkbox"], .form input[type="radio"] {
+        float: none;
+        display: inline-block;
+        }
+
+        form label, .form label {
+        display: inline-block;
+        }
+
+        #data-collection {
+        display: inline-block;
+        width: 58%;
+        vertical-align: top;
+        }
+
+        #encounter-diagnoses-target {
+        display: inline-block;
+        width: 40%;
+        vertical-align: top;
+        }
+
+        #encounter-diagnoses-app {
+        margin-bottom: 20px;
+        }
+
+        form fieldset {
+        display: block;
+        }
+
         <ifMode mode="VIEW" include="false">
             #data-collection {
             display: inline-block;
@@ -171,10 +244,110 @@
             </includeIf>
         </ifMode>
 
+        <section id="elisa" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.elisa">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:1042"
+                    answerConceptIds="CIEL:703,CIEL:664"
+                    answerLabels="Positivo,Negativo">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="westerblot" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.wesblot">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:1047"
+                         answerConceptIds="CIEL:703,CIEL:664,CIEL:1138"
+                         answerLabels="Positivo,Negativo,Indeterminado">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="cd4_count" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.lab.cd4Count">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:5497">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="hiv_viralload" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.hivViralLoadQuant">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:856">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="counseling_hiv" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.hivCounseling">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:159382"
+                         answerConceptIds="CIEL:1065,CIEL:1066"
+                         answerLabels="Si,No"
+                         style="radio">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="av_treatment" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.arvTreatment">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:166073"
+                    answerConceptIds="CIEL:166074,CIEL:166075"
+                    answerLabels="Primera Linea, Segunda Linea"
+                    showDate="true"
+                    dateLabel="Fecha de inicio de tratamiento">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="tb_comordibity" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.tbComorbidity">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:42"
+                         answerLabels="Sí,NO"
+                        style="yes_no">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="adr" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.adverseDrugEffect">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="CIEL:162760"
+                         answerConceptIds="CIEL:1498,CIEL:1499,CIEL:1500"
+                         answerLabels="Medio,Moderado,Severo"
+                         style="radio">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+        <section id="reg_failed" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.regimenFailure">
+            <div class="section-container">
+                <p>
+                    <obs conceptId ="PIH:Regimen failed"
+                         answerConceptIds="CIEL:1065,CIEL:1066"
+                         answerLabels="Si,No"
+                         style="radio">
+                    </obs>
+                </p>
+            </div>
+        </section>
+
+
 
         <ifMode mode="VIEW" include="false">
             <div id="buttons">
-                <button id="next" type="button" class="submitButton confirm right"><uimessage code="emr.next"/><i class="icon-spinner icon-spin icon-2x" style="display: none; margin-left: 10px;"></i></button>
                 <button id="submit" class="submitButton confirm right"><uimessage code="mirebalais.save"/><i class="icon-spinner icon-spin icon-2x" style="display: none; margin-left: 10px;"></i></button>
                 <button id="cancel" type="button" class="cancel"><uimessage code="emr.cancel"/></button>
             </div>
