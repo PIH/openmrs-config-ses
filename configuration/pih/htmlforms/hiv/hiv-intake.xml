@@ -296,7 +296,7 @@
             </div>
         </section>
 
-        <section id="av_treatment" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.hivintake.arvTreatment">
+        <section id="av_treatment" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.arvTreatment">
             <div class="section-container">
                 <p>
                     <obs conceptId ="CIEL:166073"
