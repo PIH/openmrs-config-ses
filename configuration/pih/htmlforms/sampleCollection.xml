@@ -36,6 +36,20 @@
     }
   </style>
 
+  <script>
+    jq(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderUuid = urlParams.get("order");
+        if (!orderUuid) {
+            throw Error("URL parameter 'order' is required, and must be an order UUID");
+        }
+        $.get("/openmrs/ws/rest/v1/order/" + orderUuid, function(data) {
+            console.log(data);
+            $("#examenes").text(data.display);
+        });
+    });
+  </script>
+
   <ifMode mode="VIEW" include="false">
     <h2>Recolección de muestras</h2>
 
@@ -71,6 +85,8 @@
       </div>
     </includeIf>
   </ifMode>
+
+  <div id="examenes"></div>
 
   Hello world!
 
