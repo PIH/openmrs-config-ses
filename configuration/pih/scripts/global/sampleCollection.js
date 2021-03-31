@@ -6,6 +6,6 @@ function setupSampleCollection() {
   }
   $.get("/openmrs/ws/rest/v1/order/" + orderUuid, function(data) {
       console.log(data);
-      $("#examenes").html(data);
+      $("#examenes").text(data.display);
   });
 }
