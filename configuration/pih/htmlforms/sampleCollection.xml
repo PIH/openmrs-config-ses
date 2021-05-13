@@ -36,6 +36,10 @@
     }
   </style>
 
+  <script>
+    setupSampleCollection();
+  </script>
+
   <ifMode mode="VIEW" include="false">
     <h2>Recolección de muestras</h2>
 
@@ -71,6 +75,8 @@
       </div>
     </includeIf>
   </ifMode>
+
+  <div id="examenes"></div>
 
   Hello world!
 
