@@ -1,0 +1,4 @@
+# Patient Identifier Types
+patientIdentifierType:
+  sesEmrId:
+    uuid: "2ffecc10-d65e-410a-9519-aa438f0b54f6"
