@@ -34,11 +34,36 @@
     #where > input[type=text] {
         display: inline-block;
     }
-  </style>
 
-  <script>
-    setupSampleCollection();
-  </script>
+    #when input[type="text"] {
+        width: 120px;
+    }
+
+    legend.title {
+        width: max-content;
+    }
+
+    #iframe {
+        width: 99%;
+    }
+    #iframe iframe {
+        width: 100%;
+        height: 480px;
+    }
+
+    .section-container {
+            background: #F2F2F2;
+            box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+            padding: 10px 5px 10px 15px;
+            line-height: 1.5em; /*add this for vertical spacing between elements*/
+    }
+
+    .two-columns {
+            column-count: 2;
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+    }
+  </style>
 
   <ifMode mode="VIEW" include="false">
     <h2>Recolección de muestras</h2>
@@ -76,9 +101,59 @@
     </includeIf>
   </ifMode>
 
-  <div id="examenes"></div>
 
-  Hello world!
+  <section id="detalleOrden" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.orderdetails">
+    <div class="section-container">
+      <table>
+        <tr>
+          <th>Fecha de Orden</th>
+            <th>Documento del Paciente</th>
+            <th>Numero de Documento</th>
+            <th>Local</th>
+            <th>Proyecto</th>
+        </tr>
+        <tr>
+          <td>
+            <!--Fecha de muestra-->
+            <render map="PIH:3267" id="fecha"/>
+          </td>
+            <td>
+                <render map="PIH:Identification type" id="documento"/>
+            </td>
+            <td>
+                <render map="PIH:Identification number" id="numerodocumento"/>
+            </td>
+            <td>
+                <render map="CIEL:161550" id="local"/>
+            </td>
+            <td>
+                <render map="CIEL:161550" id="proyecto"/>
+            </td>
+        </tr>
+      </table>
+    </div>
+
+  </section>
+
+  <section id="examen" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.exams">
+
+    <div class="section-container" >
+      <table>
+        <tr>
+          <th>Examen</th>
+        </tr>
+        <tr>
+          <td>
+            <render map="PIH:2485" id="examenes"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  
+  <section id="iframe" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.exams">
+  <iframe src="https://demo2.sociosensalud.org.pe/WSDAdmin/WTLogin.aspx" />
+  </section>
 
   <ifMode mode="VIEW" include="false">
     <div id="buttons">
