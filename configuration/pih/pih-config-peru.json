@@ -53,9 +53,13 @@
   "dispositionConfig": "file:configuration/pih/pih-dispositions-default.json",
   "findPatientColumnConfig": [
     {
-      "type": "identifier",
-      "value": "2ffecc10-d65e-410a-9519-aa438f0b54f6",
-      "label": "SESID",
+      "type": "identifierType",
+      "label": "Tipo de documento",
+      "width": "80px"
+    },
+    {
+      "type": "identifierNumber",
+      "label": "Numero de documento",
       "width": "80px"
     },
     {
@@ -77,12 +81,6 @@
       "type": "birthdate",
       "label": "coreapps.birthdate",
       "width": "100px"
-    },
-    {
-      "type": "identifier",
-      "value": "ffbd60fb-599a-4a57-b2f1-4b55847cd938",
-      "label": "DNI",
-      "width": "80px"
     }
   ]
 }

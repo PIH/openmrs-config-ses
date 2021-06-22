@@ -57,26 +57,6 @@
                          showUnits="false" unitsCssClass="append-to-value" size="dropdown" />
                 </p>
             </div>
-            <obsgroup groupingConceptId="PIH:Identification construct">
-
-            <div>
-                <h3><uimessage code="zl.registration.patient.document.type"/> </h3>
-                <p class="left">
-                    <obs conceptId="PIH:Identification type" id="documento" showUnits="false" unitsCssClass="append-to-value" size="3"/>
-
-                </p>
-            </div>
-
-            <div>
-                <h3><uimessage code="zl.registration.patient.document.number"/></h3>
-                <p class="left">
-                    <obs conceptId="PIH:Identification number" id="numerodocumento" showUnits="false" unitsCssClass="append-to-value" maxlength="9"/>
-
-                </p>
-            </div>
-
-            </obsgroup>
-
         </fieldset>
     </section>
 

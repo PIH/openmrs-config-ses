@@ -2,3 +2,7 @@
 patientIdentifierType:
   sesEmrId:
     uuid: "2ffecc10-d65e-410a-9519-aa438f0b54f6"
+  DNI:
+    uuid: "ffbd60fb-599a-4a57-b2f1-4b55847cd938"
+  Passport:
+    uuid: "3fa0990e-900d-4a80-a4c1-dcf01a0d4f9c"
