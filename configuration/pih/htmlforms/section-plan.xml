@@ -5,7 +5,7 @@
     <style type="text/css">
 
         form fieldset {
-            display: block;
+        display: block;
         }
 
         #test-orders {
@@ -13,50 +13,50 @@
 
 
         #test-orders input[type=checkbox] {
-            float: none;
-            vertical-align: middle;
+        float: none;
+        vertical-align: middle;
         }
 
         #test-orders p {
-            margin-bottom: 5px
+        margin-bottom: 5px
         }
 
         #test-orders span, #test-orders label {
-            display: inline !important;
-            vertical-align: middle;
+        display: inline !important;
+        vertical-align: middle;
         }
 
         .two-columns {
-            column-count: 2;
-            -webkit-column-count: 2;
-            -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
         }
 
         .three-columns {
-            column-count: 3;
-            -webkit-column-count: 3;
-            -moz-column-count: 3;
+        column-count: 3;
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
         }
 
         p.radio > * {
-            display: inline;
-            float: none !important;
-            min-width: initial;
+        display: inline;
+        float: none !important;
+        min-width: initial;
         }
 
         .section-container-color {
-            background: #F2F2F2;
-            box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
-            padding: 10px 5px 10px 15px;
-            line-height: 1.5em; /*add this for vertical spacing between elements*/
+        background: #F2F2F2;
+        box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+        padding: 10px 5px 10px 15px;
+        line-height: 1.5em; /*add this for vertical spacing between elements*/
         }
 
         .section {
-            width: 100%;
+        width: 100%;
         }
 
         label {
-            padding: 0px 3px 0px 0px
+        padding: 0px 3px 0px 0px
         }
 
     </style>
@@ -68,96 +68,111 @@
 
             htmlForm.getBeforeValidation().push(function() {
 
-                var valid = true;
+            var valid = true;
 
-                jq('fieldset.medication').each(function() {
+            // validate medication section
+            jq('fieldset.medication').each(function() {
 
-                    // clear out any existing error messages
-                    jq(this).find('.field-error').first().html('');
+            // clear out any existing error messages
+            jq(this).find('.field-error').first().html('');
 
-                    //var medication = (jq(this).find('.medication-name input').val()).trim();
+            //var medication = (jq(this).find('.medication-name input').val()).trim();
 
-                    // UHM-3781 we need to look for the value set by the automcomplete widget.
-                    // The value should be in the format of Drug:DRUG_ID
-                    var medication = jq(this).find('.medication-name input[type=hidden]').val();
+            // UHM-3781 we need to look for the value set by the autocomplete widget.
+            // The value should be in the format of Drug:DRUG_ID
+            var medication = jq(this).find('.medication-name input[type=hidden]').val();
 
-                    var dose = jq(this).find('.dose input').val();
-                    var doseUnits = jq(this).find('.dose-unit select').val();
-                    var frequency = jq(this).find('.frequency select').val();
-                    var duration = jq(this).find('.duration input').val();
-                    var durationUnits = jq(this).find('.duration-unit select').val();
-                    var instructions = jq(this).find('.medication-instructions input').val();
+            var dose = jq(this).find('.dose input').val();
+            var doseUnits = jq(this).find('.dose-unit select').val();
+            var frequency = jq(this).find('.frequency select').val();
+            var duration = jq(this).find('.duration input').val();
+            var durationUnits = jq(this).find('.duration-unit select').val();
+            var instructions = jq(this).find('.medication-instructions input').val();
 
-                    if (!medication &amp;&amp; (dose || doseUnits || frequency || duration || durationUnits || instructions)) {
+            if (!medication &amp;&amp; (dose || doseUnits || frequency || duration || durationUnits || instructions)) {
+            valid = false;
+            jq(this).find('.field-error').first().append("<uimessage
+                code="pihcore.visitNote.plan.medications.error.noMedication"/>. ").show();
+            }
+
+            if (dose &amp;&amp; !doseUnits) {
+            valid = false;
+            jq(this).find('.field-error').first().append("<uimessage
+                code="pihcore.visitNote.plan.medications.error.noDoseUnits"/>. ").show();
+            }
+
+            if (!dose &amp;&amp; doseUnits) {
+            valid = false;
+            jq(this).find('.field-error').first().append("<uimessage
+                code="pihcore.visitNote.plan.medications.error.noDose"/>. ").show();
+            }
+
+            if (duration &amp;&amp; !durationUnits) {
+            valid = false;
+            jq(this).find('.field-error').first().append("<uimessage
+                code="pihcore.visitNote.plan.medications.error.noDurationUnits"/>. ").show();
+            }
+
+            if (!duration &amp;&amp; durationUnits) {
+            valid = false;
+            jq(this).find('.field-error').first().append("<uimessage
+                code="pihcore.visitNote.plan.medications.error.noDuration"/>. ").show();
+            }
+
+            });
+
+            // validate that if a disposition has been selected, all the fields associated with that disposition have also been filled out
+                jq('#disposition .field-error').first().html('').hide(); // hide any previous error
+                if (jq('#disposition select:first').val() != '' &amp;&amp;
+                    (jq('#disposition select:visible').is(function() { return jq(this).val() == ''; })
+                    || jq('#disposition input:visible').is(function() { return jq(this).val() == ''; }))) {
+                        jq('#disposition .field-error').first().append('<uimessage code="pihcore.errors.fieldsAssociatedWithDisposition"/>').show();
                         valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                        code="pihcore.visitNote.plan.medications.error.noMedication"/>. ").show();
-                    }
+                }
 
-                    if (dose &amp;&amp; !doseUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDoseUnits"/>. ").show();
-                    }
-
-                    if (!dose &amp;&amp; doseUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDose"/>. ").show();
-                    }
-
-                    if (duration &amp;&amp; !durationUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDurationUnits"/>. ").show();
-                    }
-
-                    if (!duration &amp;&amp; durationUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDuration"/>. ").show();
-                    }
-
-                });
                 return valid;
 
             });
 
             jq(function() {
 
-                var hasValue = function(element) {
-                    return jq(element).find('.medication-name input').val();
-                };
+            var hasValue = function(element) {
+            return jq(element).find('.medication-name input').val();
+            };
 
-                var hideOtherMeds = function() {
-                    jq('#medication-2').hide();
-                    jq('#medication-3').hide();
-                    jq('#medication-4').hide();
-                    jq('#medication-5').hide();
-                    jq('#medication-6').hide();
-                    jq('#medication-7').hide();
-                    jq('#medication-8').hide();
-                };
+            var hideOtherMeds = function() {
+            jq('#medication-2').hide();
+            jq('#medication-3').hide();
+            jq('#medication-4').hide();
+            jq('#medication-5').hide();
+            jq('#medication-6').hide();
+            jq('#medication-7').hide();
+            jq('#medication-8').hide();
+            };
 
-                if (!hasValue('#medication-2') &amp;&amp; !hasValue('#medication-3') &amp;&amp; !hasValue('#medication-4')
-                    &amp;&amp; !hasValue('#medication-5') &amp;&amp; !hasValue('#medication-6') &amp;&amp;
-                    !hasValue('#medication-7')
-                    &amp;&amp; !hasValue('#medication-8')) {
-                        hideOtherMeds();
-                        jq('#show-more-medications-button').show();
-                }
+            if (!hasValue('#medication-2') &amp;&amp; !hasValue('#medication-3') &amp;&amp; !hasValue('#medication-4')
+            &amp;&amp; !hasValue('#medication-5') &amp;&amp; !hasValue('#medication-6') &amp;&amp;
+            !hasValue('#medication-7')
+            &amp;&amp; !hasValue('#medication-8')) {
+            hideOtherMeds();
+            jq('#show-more-medications-button').show();
+            }
 
-                jq('#show-more-medications-button').click(function() {
-                jq('.medication').show();
-                jq('#show-more-medications-button').hide();
-                jq('#show-less-medications-button').show();
+            jq('#show-more-medications-button').click(function() {
+            jq('.medication').show();
+            jq('#show-more-medications-button').hide();
+            jq('#show-less-medications-button').show();
             });
 
             jq('#show-less-medications-button').click(function() {
-                hideOtherMeds();
-                jq('#show-less-medications-button').hide();
-                jq('#show-more-medications-button').show();
+            hideOtherMeds();
+            jq('#show-less-medications-button').hide();
+            jq('#show-more-medications-button').show();
             });
+
+                jq('#disposition select:first').change(function() {
+                    jq('#disposition .field-error').first().html('').hide(); // hide any previous error if disposition is changed
+                });
 
             })
 
@@ -169,7 +184,7 @@
             <uimessage code="pihcore.visitNote.plan"/>
         </h1>
     </ifMode>
-zz
+
     <section id="clinical-management-plan" sectionTag="fieldset" headerTag="legend" headerStyle="title"
              headerCode="pihcore.consult.clinicalManagementPlan">
         <div class="section-container-color">

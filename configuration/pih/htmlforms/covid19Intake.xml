@@ -23,100 +23,116 @@
     <style type="text/css">
 
         #who-when-where {
-            margin-bottom: 6px;
-            border-bottom: 1px solid #ccc;
+        margin-bottom: 6px;
+        border-bottom: 1px solid #ccc;
         }
 
         #who-when-where p {
-            display: inline-block;
-            padding-right: 20px;
+        display: inline-block;
+        padding-right: 20px;
         }
 
         #where > input[type=text] {
-            display: inline-block;
+        display: inline-block;
         }
 
         .narrow {
-            width: 200px;
+        width: 200px;
         }
 
         .field-error {
-            color: #ff6666;
-            font-size: 1.1em;
-            display: block;
+        color: #ff6666;
+        font-size: 1.1em;
+        display: block;
         }
 
         .simple-form-ui input {
-            min-width: 90%
+        min-width: 90%
         }
 
         form fieldset {
-            min-width: 90%
+        min-width: 90%
         }
 
         #encounterDate input {
-            min-width: 15%
+        min-width: 15%
         }
 
         .section-container {
-            background: #F2F2F2;
-            box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
-            padding: 10px 5px 10px 15px;
-            line-height: 1.5em; /*add this for vertical spacing between elements*/
+        background: #F2F2F2;
+        box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+        padding: 10px 5px 10px 15px;
+        line-height: 1.5em; /*add this for vertical spacing between elements*/
         }
 
         .section-container input[type="checkbox"] {
-            margin: 0px 5px; /*changed values to vertical, horizontal*/
-            top:5px; /*added to offset the checkbox position to line up*/
+        margin: 0px 5px; /*changed values to vertical, horizontal*/
+        top:5px; /*added to offset the checkbox position to line up*/
         }
 
         .section-container label { /*new definition to override labels inside section-containers*/
-            margin: 0px;
+        margin: 0px;
         }
 
         .section {
-            width: 100%;
+        width: 100%;
         }
 
         .two-columns {
-            column-count: 2;
-            -webkit-column-count: 2;
-            -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
         }
 
         form input[type="checkbox"], form input[type="radio"],
         .form input[type="checkbox"], .form input[type="radio"] {
-            float: none;
-            display: inline-block;
+        float: none;
+        display: inline-block;
         }
 
         form label, .form label {
-            display: inline-block;
+        display: inline-block;
         }
 
         #data-collection {
-            display: inline-block;
-            width: 58%;
-            vertical-align: top;
+        display: inline-block;
+        width: 58%;
+        vertical-align: top;
         }
 
         #encounter-diagnoses-target {
-            display: inline-block;
-            width: 40%;
-            vertical-align: top;
+        display: inline-block;
+        width: 40%;
+        vertical-align: top;
         }
 
         #encounter-diagnoses-app {
-            margin-bottom: 20px;
+        margin-bottom: 20px;
         }
 
         form fieldset {
-            display: block;
+        display: block;
         }
     </style>
 
     <ifMode mode="VIEW" include="false" >
         <script type="text/javascript">
+
+            // add validation handler to the HTML form
+            htmlForm.getBeforeValidation().push(function() {
+                var valid = true;
+
+                // validate that if a disposition has been selected, all the fields associated with that disposition have also been filled out
+                jq('#disposition .field-error').first().html('').hide(); // hide any previous error
+
+                if (jq('#disposition select:first').val() != '' &amp;&amp;
+                    (jq('#disposition select:visible').is(function() { return jq(this).val() == ''; })
+                    || jq('#disposition input:visible').is(function() { return jq(this).val() == ''; }))) {
+                        jq('#disposition .field-error').first().append('<uimessage code="pihcore.errors.fieldsAssociatedWithDisposition"/>').show();
+                        valid = false;
+                }
+                return valid;
+            });
 
             jq(function() {
 
@@ -163,13 +179,11 @@
             });
 
             updateEdd();
+
+                jq('#disposition select:first').change(function() {
+                    jq('#disposition .field-error').first().html('').hide(); // hide any previous error if disposition is changed
+                });
             });
-        </script>
-    </ifMode>
-
-    <ifMode mode="VIEW" include="false">
-        <script type="text/javascript">
-
         </script>
     </ifMode>
 
@@ -285,7 +299,7 @@
                                 <uimessage code="emr.locationRequired"/>
                             </label>
                             <span>
-                                <encounterLocation default="SessionAttribute:emrContext.sessionLocationId" tags="COVID-19 Location"/>
+                                <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
                             </span>
                         </td>
                         <td>
@@ -300,10 +314,15 @@
                 </table>
             </div>
         </includeIf>
-      </ifMode>
+    </ifMode>
 
     <section id="demographics" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="patientDashboard.demographics">
         <div class="section-container">
+
+            <!-- Program enrollment -->
+            <p>
+                <enrollInProgram programId="COVID-19" locationTag="Program Location"/>
+            </p>
 
             <!-- Health care worker (> 16 yo) -->
             <includeIf velocityTest="$patient.age &gt; 16">
@@ -315,10 +334,10 @@
                          answerConceptId="CIEL:1065" />
 
                     <div id="worker">
-                    <label>
-                        <uimessage code="Type"/>
-                    </label>
-                    <obs conceptId="CIEL:166014" />
+                        <label>
+                            <uimessage code="Type"/>
+                        </label>
+                        <obs conceptId="CIEL:166014" />
                     </div>
                 </p>
             </includeIf>
@@ -420,7 +439,7 @@
                          answerConceptIds="CIEL:1065,CIEL:1066"
                          style="radio" />
                 </p>
-           </includeIf>
+            </includeIf>
 
             <!-- Child < 14 yo -->
             <includeIf velocityTest="$patient.age &lt; 14">
@@ -505,7 +524,7 @@
             <!-- Other symptoms -->
             <obs conceptId="CIEL:165996" style="textarea" rows="3" cols="60"
                  labelCode="zl.ifOtherSpecify"  />
-         </div>
+        </div>
     </section>
 
     <section id="comorbitity" sectionTag="fieldset" headerTag="legend" headerStyle="title"
@@ -894,22 +913,22 @@
 
     <section id="lab" sectionTag="fieldset" headerTag="legend"
              headerStyle="title" headerCode="pihcore.lab.lab_tests.title">
-    <div class="section-container">
-        <h3>
-            <uimessage code="pihcore.lab.covidTest"/>
-        </h3>
-        <table>
-            <tr>
-                <repeat with="['lab.specimen_date'],['specimenType'],['result']">
+        <div class="section-container">
+            <h3>
+                <uimessage code="pihcore.lab.covidTest"/>
+            </h3>
+            <table>
+                <tr>
+                    <repeat with="['lab.specimen_date'],['specimenType'],['result']">
                         <th>
                             <label>
                                 <uimessage code="pihcore.{0}" />
                             </label>
                         </th>
-                </repeat>
-            </tr>
+                    </repeat>
+                </tr>
 
-            <repeat with="['0'],['1'],['3']">
+                <repeat with="['0'],['1'],['3']">
                     <!-- PIH concept for Specimen set -->
                     <obsgroup groupingConceptId="PIH:12973">
                         <tr>
@@ -960,73 +979,73 @@
                             </td>
                         </tr>
                     </obsgroup>
-            </repeat>
-        </table>
+                </repeat>
+            </table>
 
-        <h3>
-            <uimessage code="pihcore.lab.other" />
-        </h3>
-        <div class="two-columns">
-            <repeat>
-                <template>
-                    <label>
-                        <uimessage code="{text}"/>
-                    </label>
-                    <span class="small">
-                        <obs conceptId="{map}" showUnits="true"/>
-                    </span>
-                    <br/>
-                </template>
+            <h3>
+                <uimessage code="pihcore.lab.other" />
+            </h3>
+            <div class="two-columns">
+                <repeat>
+                    <template>
+                        <label>
+                            <uimessage code="{text}"/>
+                        </label>
+                        <span class="small">
+                            <obs conceptId="{map}" showUnits="true"/>
+                        </span>
+                        <br/>
+                    </template>
 
-                <render map="CIEL:21" text="pihcore.lab.hemoglobin" />
-                <render map="CIEL:1015" text="pihcore.lab.hematocrit" />
-                <render map="CIEL:678" text="pihcore.lab.white_blood_cell" />
-                <render map="CIEL:729" text="pihcore.lab.platelets" />
+                    <render map="CIEL:21" text="pihcore.lab.hemoglobin" />
+                    <render map="CIEL:1015" text="pihcore.lab.hematocrit" />
+                    <render map="CIEL:678" text="pihcore.lab.white_blood_cell" />
+                    <render map="CIEL:729" text="pihcore.lab.platelets" />
 
-                <render map="CIEL:952" text="pihcore.lab.lymphocyte" />
-                <render map="CIEL:1330" text="pihcore.lab.neutrophil" />
-                <!-- ToDo:  Add Serum lactate (CIEL:1012) -->
-                <render map="CIEL:161500" text="CRP" />
+                    <render map="CIEL:952" text="pihcore.lab.lymphocyte" />
+                    <render map="CIEL:1330" text="pihcore.lab.neutrophil" />
+                    <!-- ToDo:  Add Serum lactate (CIEL:1012) -->
+                    <render map="CIEL:161500" text="CRP" />
 
-                <render map="CIEL:1132" text="pihcore.lab.sodium" />
-                <render map="CIEL:1133" text="pihcore.lab.potassium" />
-                <render map="CIEL:857" text="pihcore.lab.urea" />
-                <render map="CIEL:790" text="pihcore.lab.creatinine" />
+                    <render map="CIEL:1132" text="pihcore.lab.sodium" />
+                    <render map="CIEL:1133" text="pihcore.lab.potassium" />
+                    <render map="CIEL:857" text="pihcore.lab.urea" />
+                    <render map="CIEL:790" text="pihcore.lab.creatinine" />
 
-                <render map="CIEL:887" text="pihcore.lab.glucose" />
-                <render map="CIEL:655" text="pihcore.lab.bilirubin" />
-                <render map="CIEL:654" text="AST/SGPT" />
-                <render map="CIEL:653" text="AST/SGOT" />
-            </repeat>
+                    <render map="CIEL:887" text="pihcore.lab.glucose" />
+                    <render map="CIEL:655" text="pihcore.lab.bilirubin" />
+                    <render map="CIEL:654" text="AST/SGPT" />
+                    <render map="CIEL:653" text="AST/SGOT" />
+                </repeat>
+            </div>
+
+            <h3>
+                <uimessage code="pihcore.lab.abg"/>
+            </h3>
+            <div class="two-columns">
+                <repeat>
+                    <template>
+                        <label>
+                            <uimessage code="{text}"/>
+                        </label>
+                        <span class="small">
+                            <obs conceptId="{map}" showUnits="true"/>
+                        </span>
+                        <br/>
+                    </template>
+
+                    <render map="CIEL:165984" text="pH" />
+                    <render map="CIEL:163595" text="PCO2" />
+                    <render map="CIEL:163598" text="PO2" />
+                    <render map="CIEL:166002" text="TCO2" />
+                    <render map="CIEL:163596" text="HCO3" />
+                    <render map="CIEL:163599" text="BE" />
+                    <render map="CIEL:163597" text="sO2" />
+                    <render map="CIEL:165997" text="Lactate" />
+                </repeat>
+            </div>
+
         </div>
-
-        <h3>
-            <uimessage code="pihcore.lab.abg"/>
-        </h3>
-        <div class="two-columns">
-            <repeat>
-                <template>
-                    <label>
-                        <uimessage code="{text}"/>
-                    </label>
-                    <span class="small">
-                        <obs conceptId="{map}" showUnits="true"/>
-                    </span>
-                    <br/>
-                </template>
-
-                <render map="CIEL:165984" text="pH" />
-                <render map="CIEL:163595" text="PCO2" />
-                <render map="CIEL:163598" text="PO2" />
-                <render map="CIEL:166002" text="TCO2" />
-                <render map="CIEL:163596" text="HCO3" />
-                <render map="CIEL:163599" text="BE" />
-                <render map="CIEL:163597" text="sO2" />
-                <render map="CIEL:165997" text="Lactate" />
-            </repeat>
-        </div>
-
-    </div>
     </section>
 
     <section id="radiology-orders" sectionTag="fieldset" headerTag="legend" headerStyle="title"
@@ -1125,4 +1144,4 @@
         </div>
     </ifMode>
 
-  </htmlform>
+</htmlform>
