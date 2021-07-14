@@ -16,7 +16,7 @@ $(() => {
 	  $("#fecha").text(new Date(Date.parse(encounter.encounterDatetime)).toLocaleString());
 	  $("#local").text(encounter.location.display);
 	  $("#proyecto").text(encounter.location.display);
-	  $.each(encounter.orders, (i, orders) => {
+	  encounter.orders.forEach((orders) => {
 		//console.log(orders);
 		examenes.push(orders.display);
 		$("#examenes").append($(`<td>${orders.display}</td>`));
