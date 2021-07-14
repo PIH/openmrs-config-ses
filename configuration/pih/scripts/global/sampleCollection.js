@@ -5,7 +5,8 @@ $(() => {
 
 	  // Sección: Llamadas a API - EMR
 	  const urlParams = new URLSearchParams(window.location.search);
-	  const encounterId = urlParams.get("encounterId"), patientId = urlParams.get("patientId");
+	  const encounterId = urlParams.get("encounterId");
+	  const patientId = urlParams.get("patientId");
 	  // Subsección: Encounter - Orders
 	  const encounter = await $.get(`/openmrs/ws/rest/v1/encounter/${encounterId}`);
 	  //examenes=orders.display;
