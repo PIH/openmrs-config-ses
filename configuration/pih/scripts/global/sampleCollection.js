@@ -28,7 +28,7 @@ $(() => {
 	  let fecnac=new Date(Date.parse(paciente.person.birthdate)).toLocaleDateString();
 	  let fechaNacimientoValue=fecnac.substring(0,10);
 	  let sexoValue=paciente.person.gender;
-	  $.each(paciente.identifiers, (i=1, data) => {
+	  paciente.identifiers.forEach(data => {
 		  console.log(data);
 		  tipoDocumentoValue = data.display.split('= ')[0];
 		  $("#documento").text(tipoDocumentoValue);
