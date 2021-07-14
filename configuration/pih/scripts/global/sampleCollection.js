@@ -21,7 +21,7 @@ $(() => {
 		examenes.push(orders.display);
 		$("#examenes").append($(`<td>${orders.display}</td>`));
 	  });
-	  const paciente= await $.get(`/openmrs/ws/rest/v1/patient/${patientId}`);
+	  const paciente = await $.get(`/openmrs/ws/rest/v1/patient/${patientId}`);
 	  let nombresValue=paciente.person.display.split(" ")[2];
 	  let apePaternoValue=paciente.person.display.split(" ")[1].slice(0,-1);
 	  let apeMaternoValue=paciente.person.display.split(" ")[0];
