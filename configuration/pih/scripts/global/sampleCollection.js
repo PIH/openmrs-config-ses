@@ -25,7 +25,7 @@ $(() => {
 	  let nombresValue=paciente.person.display.split(" ")[2];
 	  let apePaternoValue=paciente.person.display.split(" ")[1].slice(0,-1);
 	  let apeMaternoValue=paciente.person.display.split(" ")[0];
-	  let fecnac=new Date(Date.parse(paciente.person.birthdate)).toLocaleDateString('en-ZA');
+	  let fecnac=new Date(Date.parse(paciente.person.birthdate)).toLocaleDateString();
 	  let fechaNacimientoValue=fecnac.substring(0,10);
 	  let sexoValue=paciente.person.gender;
 	  $.each(paciente.identifiers, (i=1, data) => {
