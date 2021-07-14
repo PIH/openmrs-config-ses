@@ -10,7 +10,7 @@ $(() => {
 	  // Subsección: Encounter - Orders
 	  const encounter = await $.get(`/openmrs/ws/rest/v1/encounter/${encounterId}`);
 	  //examenes=orders.display;
-	  let fechaVisitaValue=new Date(Date.parse(encounter.encounterDatetime)).toLocaleString();
+	  const fechaVisitaValue = new Date(Date.parse(encounter.encounterDatetime)).toLocaleString();
 	  let examenes=[];
 	  //console.log(encounter);
 	  $("#fecha").text(new Date(Date.parse(encounter.encounterDatetime)).toLocaleString());
