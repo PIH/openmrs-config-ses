@@ -50,5 +50,43 @@
       }
     }
   },
-  "dispositionConfig": "file:configuration/pih/pih-dispositions-default.json"
+  "extraIdentifierTypes": [
+    "${patientIdentifierType.DNI.uuid}",
+    "${patientIdentifierType.Passport.uuid}"
+  ],
+  "dispositionConfig": "file:configuration/pih/pih-dispositions-default.json",
+  "findPatientColumnConfig": [
+    {
+      "type": "identifier",
+      "label": "DNI",
+      "value": "${patientIdentifierType.DNI.uuid}",
+      "width": "80px"
+    },
+    {
+      "type": "identifier",
+      "label": "Passport",
+      "value": "${patientIdentifierType.Passport.uuid}",
+      "width": "80px"
+    },
+    {
+      "type": "name",
+      "label": "coreapps.search.name",
+      "width": "200px"
+    },
+    {
+      "type": "gender",
+      "label": "coreapps.gender",
+      "width": "65px"
+    },
+    {
+      "type": "age",
+      "label": "coreapps.age",
+      "width": "50px"
+    },
+    {
+      "type": "birthdate",
+      "label": "coreapps.birthdate",
+      "width": "100px"
+    }
+  ]
 }
