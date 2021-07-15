@@ -114,21 +114,20 @@
         </tr>
         <tr>
           <td>
-            <!--Fecha de muestra-->
-            <render map="PIH:3267" id="fecha"/>
-          </td>
-            <td>
-                <render map="PIH:Identification type" id="documento"/>
-            </td>
-            <td>
-                <render map="PIH:Identification number" id="numerodocumento"/>
-            </td>
-            <td>
-                <render map="CIEL:161550" id="local"/>
-            </td>
-            <td>
-                <render map="CIEL:161550" id="proyecto"/>
-            </td>
+                <div id="fecha"></div>
+           </td>
+           <td>
+                <div id="documento"></div>
+           </td>
+           <td>
+                <div id="numerodocumento"></div>
+           </td>
+           <td>
+                <div id="local"></div>
+           </td>
+           <td>
+                <div id="proyecto"></div>
+           </td>
         </tr>
       </table>
     </div>
