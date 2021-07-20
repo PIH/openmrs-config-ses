@@ -34,6 +34,35 @@
     #where > input[type=text] {
         display: inline-block;
     }
+
+    #when input[type="text"] {
+        width: 120px;
+    }
+
+    legend.title {
+        width: max-content;
+    }
+
+    #iframe {
+        width: 99%;
+    }
+    #iframe iframe {
+        width: 100%;
+        height: 480px;
+    }
+
+    .section-container {
+            background: #F2F2F2;
+            box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+            padding: 10px 5px 10px 15px;
+            line-height: 1.5em; /*add this for vertical spacing between elements*/
+    }
+
+    .two-columns {
+            column-count: 2;
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+    }
   </style>
 
   <ifMode mode="VIEW" include="false">
@@ -72,7 +101,58 @@
     </includeIf>
   </ifMode>
 
-  Hello world!
+
+  <section id="detalleOrden" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.orderdetails">
+    <div class="section-container">
+      <table>
+        <tr>
+          <th>Fecha de Orden</th>
+            <th>Documento del Paciente</th>
+            <th>Numero de Documento</th>
+            <th>Local</th>
+            <th>Proyecto</th>
+        </tr>
+        <tr>
+          <td>
+                <div id="fecha"></div>
+           </td>
+           <td>
+                <div id="documento"></div>
+           </td>
+           <td>
+                <div id="numerodocumento"></div>
+           </td>
+           <td>
+                <div id="local"></div>
+           </td>
+           <td>
+                <div id="proyecto"></div>
+           </td>
+        </tr>
+      </table>
+    </div>
+
+  </section>
+
+  <section id="examen" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.exams">
+
+    <div class="section-container" >
+      <table>
+        <tr>
+          <th>Examen</th>
+        </tr>
+        <tr>
+          <td>
+            <div id="examenes"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  
+  <section id="iframe" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.exams">
+  <iframe src="https://demo2.sociosensalud.org.pe/WSDAdmin/WTLogin.aspx" />
+  </section>
 
   <ifMode mode="VIEW" include="false">
     <div id="buttons">
