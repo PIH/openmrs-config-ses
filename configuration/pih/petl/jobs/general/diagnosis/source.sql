@@ -1,6 +1,6 @@
-select encounter_type_id into @tb_general from encounter_type where uuid= 'aa42cc6c-b9ee-4850-926c-dda4bb14d890';/*50 tb intake*/
-select encounter_type_id into @covid_general from encounter_type where uuid='8d50b938-dcf9-4b8e-9938-e625bd2f0a81';/*45 covid-19 admission*/
-select encounter_type_id into @hiv_general from encounter_type where uuid='c31d306a-40c4-11e7-a919-92ebcb67fe33';/*30 hiv intake*/
+select encounter_type_id into @tb_general from encounter_type where uuid= 'aa42cc6c-b9ee-4850-926c-dda4bb14d890'; --50 tb intake
+select encounter_type_id into @covid_general from encounter_type where uuid='8d50b938-dcf9-4b8e-9938-e625bd2f0a81'; --45 covid-19 admission
+select encounter_type_id into @hiv_general from encounter_type where uuid='c31d306a-40c4-11e7-a919-92ebcb67fe33'; --30 hiv intake
 
 drop temporary table if exists temp_diagnosis;
 create temporary table temp_diagnosis
