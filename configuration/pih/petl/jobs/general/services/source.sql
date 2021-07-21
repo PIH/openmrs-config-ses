@@ -1,4 +1,4 @@
-select encounter_type_id into @examenes from encounter_type where uuid= 'b3a0e3ad-b80c-4f3f-9626-ace1ced7e2dd';/*26 test orders(lab)*/
+select encounter_type_id into @examenes from encounter_type where uuid= 'b3a0e3ad-b80c-4f3f-9626-ace1ced7e2dd'; --26 test orders(lab)
 
 drop temporary table if exists temp_services;
 create temporary table temp_services
