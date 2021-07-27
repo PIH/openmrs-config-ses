@@ -14,31 +14,32 @@ frecuencia_tarde int
 );
 
 set @YEAR=YEAR(NOW());
+set @diaslaborales=datediff(NOW(),CONCAT(YEAR(NOW()), '-01-01'))/365*251;
 
 insert into temp_diagnosis (especialidad,frecuencia_dias,frecuencia_semana,frecuencia_mes,frecuencia_manana,frecuencia_tarde)
-select 'tuberculosis',(count(encounter_type))/251 as frecuencia_dia,
+select 'tuberculosis',(count(encounter_type))/@diaslaborales as frecuencia_dia,
 (count(encounter_type)/(WEEK(MAX(encounter_datetime)) - WEEK(MIN(encounter_datetime))+1)) as frecuencia_semana,
 (count(encounter_type)/(MONTH(MAX(encounter_datetime))-MONTH(MIN(encounter_datetime))+1)) as frecuencia_mes,
-(select count(encounter_type)/251 from encounter where HOUR (encounter_datetime) BETWEEN 01 AND 11 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 )as frecuencia_manana,
-(select count(encounter_type)/251 from encounter where HOUR (encounter_datetime) BETWEEN 12 AND 23 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 ) as frecuencia_tarde
+(select count(encounter_type)/@diaslaborales from encounter where HOUR (encounter_datetime) BETWEEN 01 AND 11 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 )as frecuencia_manana,
+(select count(encounter_type)/@diaslaborales from encounter where HOUR (encounter_datetime) BETWEEN 12 AND 23 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 ) as frecuencia_tarde
 from encounter
 where encounter_type=@tb_general and YEAR(encounter_datetime) = @YEAR;
 
 insert into temp_diagnosis (especialidad,frecuencia_dias,frecuencia_semana,frecuencia_mes,frecuencia_manana,frecuencia_tarde)
-select 'covid',(count(encounter_type))/251 as frecuencia_dia,
+select 'covid',(count(encounter_type))/@diaslaborales as frecuencia_dia,
 (count(encounter_type)/(WEEK(MAX(encounter_datetime)) - WEEK(MIN(encounter_datetime))+1)) as frecuencia_semana,
 (count(encounter_type)/(MONTH(MAX(encounter_datetime))-MONTH(MIN(encounter_datetime))+1)) as frecuencia_mes,
-(select count(encounter_type)/251 from encounter where HOUR (encounter_datetime) BETWEEN 01 AND 11 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 )as frecuencia_manana,
-(select count(encounter_type)/251 from encounter where HOUR (encounter_datetime) BETWEEN 12 AND 23 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 ) as frecuencia_tarde
+(select count(encounter_type)/@diaslaborales from encounter where HOUR (encounter_datetime) BETWEEN 01 AND 11 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 )as frecuencia_manana,
+(select count(encounter_type)/@diaslaborales from encounter where HOUR (encounter_datetime) BETWEEN 12 AND 23 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 ) as frecuencia_tarde
 from encounter
 where encounter_type=@covid_general and YEAR(encounter_datetime) = @YEAR;
 
 insert into temp_diagnosis (especialidad,frecuencia_dias,frecuencia_semana,frecuencia_mes,frecuencia_manana,frecuencia_tarde)
-select 'hiv',(count(encounter_type))/251 as frecuencia_dia,
+select 'hiv',(count(encounter_type))/@diaslaborales as frecuencia_dia,
 (count(encounter_type)/(WEEK(MAX(encounter_datetime)) - WEEK(MIN(encounter_datetime))+1)) as frecuencia_semana,
 (count(encounter_type)/(MONTH(MAX(encounter_datetime))-MONTH(MIN(encounter_datetime))+1)) as frecuencia_mes,
-(select count(encounter_type)/251 from encounter where HOUR (encounter_datetime) BETWEEN 01 AND 11 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 )as frecuencia_manana,
-(select count(encounter_type)/251 from encounter where HOUR (encounter_datetime) BETWEEN 12 AND 23 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 ) as frecuencia_tarde
+(select count(encounter_type)/@diaslaborales from encounter where HOUR (encounter_datetime) BETWEEN 01 AND 11 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 )as frecuencia_manana,
+(select count(encounter_type)/@diaslaborales from encounter where HOUR (encounter_datetime) BETWEEN 12 AND 23 AND MINUTE (encounter_datetime) BETWEEN 00 AND 59 ) as frecuencia_tarde
 from encounter
 where encounter_type=@hiv_general and YEAR(encounter_datetime) = @YEAR;
 
