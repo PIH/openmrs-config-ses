@@ -1,0 +1,3 @@
+Uuid,Void/Retire,Name,Description,Format,Foreign uuid,Searchable
+${personAttributeType.CELLPHONE_NUMBER.uuid},,Telefono Celular,Numero de telefono celular de la persona,java.lang.String,,
+${personAttributeType.ELECTRONIC_EMAIL.uuid},,Correo Electronico,Dirección de correo electronico de la persona,java.lang.String,,
