@@ -6,3 +6,9 @@ patientIdentifierType:
     uuid: "ffbd60fb-599a-4a57-b2f1-4b55847cd938"
   Passport:
     uuid: "3fa0990e-900d-4a80-a4c1-dcf01a0d4f9c"
+
+personAttributeType:
+  CELLPHONE_NUMBER:
+    uuid: "f0d3a22f-95b5-4054-9c04-31d5abc2edb4"
+  ELECTRONIC_EMAIL:
+    uuid: "404a5a8f-ac7b-448d-bf6a-e78bb6e1b840"
