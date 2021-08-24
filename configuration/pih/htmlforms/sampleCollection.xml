@@ -13,7 +13,7 @@
   -->
 
 <htmlform id="sampleCollection" class="simple-form-ui"
-          formName="Sample Collection"
+          formName="Recolección de muestra"
           formUuid="26c30501-154c-497d-a094-06665813109c"
           formEncounterType="39C09928-0CAB-4DBA-8E48-39C631FA4286"
           formVersion="1.0">
@@ -151,12 +151,11 @@
   </section>
   
   <section id="iframe" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="pihcore.samplecollection.exams">
-  <iframe src="https://demo2.sociosensalud.org.pe/WSDAdmin/WTLogin.aspx" />
+  <iframe src="about:blank"/>
   </section>
 
   <ifMode mode="VIEW" include="false">
     <div id="buttons">
-        <submit submitClass="confirm right" submitCode="mirebalais.save"/>
         <button type="button" class="cancel">
             <uimessage code="emr.cancel"/>
         </button>
