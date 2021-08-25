@@ -742,7 +742,7 @@
                               ['Tocilizumab',  'CIEL:165872']">
                     <obsgroup groupingConceptId="PIH:Prescription construct">
                         <obs conceptId="PIH:1282" answerConceptId="{1}"
-                             answerCode="{0}"
+                             answerLabel="{0}"
                              style="checkbox"/>
                     </obsgroup>
                 </repeat>
