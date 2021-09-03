@@ -570,7 +570,8 @@
                     <uimessage code="pihcore.caseCondition"/>
                 </label>
                 <obs conceptId="CIEL:159640" style="radio"
-                     answerConceptIds="CIEL:1498,CIEL:1499,CIEL:1500,CIEL:164830"/>
+                     answerConceptIds="CIEL:1498,CIEL:1499,CIEL:1500,CIEL:164830"
+                     answerCodes="pihcore.pain.mild,pihcore.pain.moderate,pihcore.admition.severe,pihcore.admition.critical"/>
             </div>
         </div>
     </section>
@@ -849,7 +850,7 @@
 
                 <!-- Prone position -->
                 <br/>
-                <obs conceptId="CIEL:165995" answerConceptId="CIEL:165928" style="checkbox" />
+                <obs conceptId="CIEL:165995" answerConceptId="CIEL:165928" answerCode="pihcore.Prone_position" style="checkbox" />
             </div>
 
             <div>
@@ -895,7 +896,8 @@
                 </label>
                 <!-- Confirmed, Suspected, No -->
                 <obs conceptId="CIEL:165793" required="true"
-                     answerConceptIds="CIEL:159392,CIEL:162743,CIEL:1066" style="radio"/>
+                     answerConceptIds="CIEL:159392,CIEL:162743,CIEL:1066" 
+                     answerCodes="pihcore.confirmed,pihcore.suspected" style="radio"/>
             </p>
 
             <div id="data-collection">
