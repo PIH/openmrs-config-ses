@@ -1,6 +1,6 @@
 Uuid,Void/Retire,Name,Description,Parent,Tag|Identifier Assignment Location,Tag|Login Location,Tag|Visit Location,Tag|Vitals Location,Tag|Medical Record Location,Tag|Consult Note Location,Tag|Registration Location,Tag|HIV Consult Location,Tag|COVID-19 Location,Address 1,Address 2,Address 3,Address 4,Address 5,Address 6,City/Village,County/District,State/Province,Postal Code,Country
 48f7f4e1-a473-4b54-a2fa-4e9be2915388,,Peru,,,,,,,,,,,"",,,,,,,,,,,
-79e3613f-fc06-4999-b1b4-bdefdc89184d,,Consultorio Oscar Romero (COR),,Peru,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Av. Los Constructores 1230,,,,,,Lima,Lima,Lima,15012,Peru
+79e3613f-fc06-4999-b1b4-bdefdc89184d,,Centro Medico Oscar Romero (COR),,Peru,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Av. Los Constructores 1230,,,,,,Lima,Lima,Lima,15012,Peru
 9762ed75-3a36-4058-a719-a476539d2812,,RX Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
 375d3942-af62-4716-bd74-55595152e932,,Mb Room,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
 035ccca9-fe98-4f79-bd58-62dafaaf6357,,RX Workstation,,Consultorio Oscar Romero (COR),,TRUE,,,,,,,"",,,,,,,,,,,
