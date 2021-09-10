@@ -56,7 +56,7 @@
     "${patientIdentifierType.DNI.uuid}",
     "${patientIdentifierType.Passport.uuid}"
   ],
-  "dispositionConfig": "file:configuration/pih/pih-dispositions-default.json",
+  "dispositionConfig": "file:configuration/pih/pih-dispositions-peru.json",
   "findPatientColumnConfig": [
     {
       "type": "identifier",
