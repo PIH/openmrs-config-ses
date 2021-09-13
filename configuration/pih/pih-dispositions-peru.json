@@ -1,0 +1,51 @@
+[
+    {
+        "uuid": "citedForOutpatientConsult",
+        "name": "disposition.emrapi.citedForOutpatientConsult",
+        "conceptCode": "PIH:Patient referred to primary care",
+        "additionalObs": []
+    },
+    {
+        "uuid": "referToHospital",
+        "name": "disposition.emrapi.referToHospital",
+        "conceptCode": "PIH:12744",
+        "additionalObs": []
+    },
+    {
+        "uuid": "referToEmergencyCare",
+        "name": "disposition.emrapi.referToEmergencyCare",
+        "conceptCode": "PIH:Referred to emergency care",
+        "additionalObs": []
+    },
+    {
+        "uuid": "definitiveDischargeRecovery",
+        "type": "DISCHARGE",
+        "name": "disposition.emrapi.definitiveDischargeRecovery",
+        "conceptCode": "PIH:DISCHARGED",
+        "additionalObs": []
+    },
+    {
+        "uuid": "selfDischarge",
+        "type": "DISCHARGE",
+        "name": "disposition.emrapi.selfDischarge",
+        "conceptCode": "PIH:Departed without medical discharge",
+        "additionalObs": []
+    },
+    {
+        "uuid": "markPatientDead",
+        "name": "disposition.emrapi.death",
+        "conceptCode": "PIH:DEATH",
+        "actions": [
+          "markPatientDeadDispositionAction"
+        ],
+        "additionalObs": [
+          {
+            "label": "disposition.emrapi.death.deathDate",
+            "conceptCode": "org.openmrs.module.emrapi: Date of Death",
+            "params": {
+              "id": "dateOfDeath"
+            }
+          }
+        ]
+      }   
+]
