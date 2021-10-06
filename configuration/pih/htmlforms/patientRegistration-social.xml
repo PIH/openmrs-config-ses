@@ -52,10 +52,35 @@
                 <h3><uimessage code="zl.registration.patient.occupation.label"/></h3>
                 <p class="left">
                     <obs conceptId="PIH:Occupation" id="occupation"
-                         answerConceptIds="PIH:BREWER,CIEL:162944,PIH:COMMERCE,PIH:DRIVER,PIH:FACTORY WORKER,PIH:FARMER,CIEL:159674,PIH:FRUIT OR VEGETABLE SELLER,PIH:HEALTH CARE WORKER,PIH:1404,PIH:HOUSEWORK/FIELDWORK,PIH:MANUAL LABORER,CIEL:162945,PIH:MINER,PIH:PROFESSIONAL,PIH:RETIRED,PIH:SHEPHERD,PIH:SHOP OWNER,PIH:STUDENT,PIH:Teacher,PIH:UNEMPLOYED,PIH:OTHER NON-CODED"
-                         answerCodes="zl.registration.patient.occupation.brewer.label,zl.registration.patient.occupation.civilServant.label,zl.registration.patient.occupation.commerce.label,zl.registration.patient.occupation.driver.label,zl.registration.patient.occupation.factoryWorker.label,zl.registration.patient.occupation.farmer.label,zl.registration.patient.occupation.fisherman.label,zl.registration.patient.occupation.fruitOrVegetableVendor.label,zl.registration.patient.occupation.healthCareWorker.label,zl.registration.patient.occupation.housework.label,zl.registration.patient.occupation.houseworkFieldwork.label,zl.registration.patient.occupation.manualLaborer.label,zl.registration.patient.occupation.marketVendor.label,zl.registration.patient.occupation.miner.label,zl.registration.patient.occupation.professional.label,zl.registration.patient.occupation.retired.label,zl.registration.patient.occupation.shepherd.label,zl.registration.patient.occupation.shopOwner.label,zl.registration.patient.occupation.student.label,zl.registration.patient.occupation.teacher.label,zl.registration.patient.occupation.unemployed.label,zl.registration.patient.occupation.other.label"
-                         showUnits="false" unitsCssClass="append-to-value" size="dropdown" />
+                         answerConceptIds="PIH:BREWER,CIEL:162944,PIH:COMMERCE,PIH:DRIVER,PIH:FACTORY WORKER,PIH:FARMER,CIEL:159674,PIH:FRUIT OR VEGETABLE SELLER,PIH:HEALTH CARE WORKER,PIH:1404,PIH:HOUSEWORK/FIELDWORK,PIH:MANUAL LABORER,CIEL:162945,PIH:MINER,PIH:PROFESSIONAL,PIH:RETIRED,PIH:SHEPHERD,PIH:SHOP OWNER,PIH:STUDENT,PIH:Teacher,PIH:Electrical engineer,PIH:UNEMPLOYED,PIH:OTHER NON-CODED"
+                         answerCodes="zl.registration.patient.occupation.brewer.label,zl.registration.patient.occupation.civilServant.label,zl.registration.patient.occupation.commerce.label,zl.registration.patient.occupation.driver.label,zl.registration.patient.occupation.factoryWorker.label,zl.registration.patient.occupation.farmer.label,zl.registration.patient.occupation.fisherman.label,zl.registration.patient.occupation.fruitOrVegetableVendor.label,zl.registration.patient.occupation.healthCareWorker.label,zl.registration.patient.occupation.housework.label,zl.registration.patient.occupation.houseworkFieldwork.label,zl.registration.patient.occupation.manualLaborer.label,zl.registration.patient.occupation.marketVendor.label,zl.registration.patient.occupation.miner.label,zl.registration.patient.occupation.professional.label,zl.registration.patient.occupation.retired.label,zl.registration.patient.occupation.shepherd.label,zl.registration.patient.occupation.shopOwner.label,zl.registration.patient.occupation.student.label,zl.registration.patient.occupation.teacher.label,zl.registration.patient.occupation.unemployed.label,zl.registration.patient.occupation.electricalEngineer.label,zl.registration.patient.occupation.other.label"
+                         showUnits="false" unitsCssClass="append-to-value" size="dropdown" >
+                         <controls>
+                            <when value="PIH:OTHER NON-CODED" thenDisplay="#especificarOcupacion"/>
+                         </controls>
+                    </obs>
                 </p>
+            </div>
+            <div id="especificarOcupacion">
+                <h3>Especificar Ocupacion</h3>
+                <obs conceptId="PIH:MAIN ACTIVITY, NON-CODED" showUnits="false" unitsCssClass="append-to-value"/>
+            </div>
+            <div>
+                <h3>Identidad de Genero</h3>
+                <p class="left">
+                    <obs conceptId="PIH:Gender identity" id="genderIdentity"
+                        answerConceptIds="PIH:2843,PIH:2844,PIH:13683,PIH:13684,PIH:13685,PIH:OTHER NON-CODED"
+                        answerCodes="zl.registration.patient.IdentityGender.Male,zl.registration.patient.IdentityGender.Female,zl.registration.patient.IdentityGender.TransMan,zl.registration.patient.IdentityGender.TransWoman,zl.registration.patient.IdentityGender.GenderNon,zl.registration.patient.occupation.other.label"
+                        showUnits="false" unitsCssClass="append-to-value" size="dropdown">
+                        <controls>
+                            <when value="PIH:OTHER NON-CODED" thenDisplay="#especificarGenero"/>
+                        </controls>
+                    </obs>
+                </p>
+            </div>
+            <div id="especificarGenero">
+                <h3>Especificar Genero</h3>
+                <obs conceptId="PIH:Gender identity non-coded" showUnits="false" unitsCssClass="append-to-value"/>
             </div>
         </fieldset>
     </section>
