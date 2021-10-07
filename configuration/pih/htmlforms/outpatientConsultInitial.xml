@@ -1,7 +1,7 @@
 
 <htmlform formUuid="716c77dc-7239-45ae-a4c5-70f3d98871c1"
           formEncounterType="59e55ca8-f3de-4d1e-b54c-9b880405b853"
-          formName="Consulta Ambulatoria" formVersion="1.0">
+          formName="Historial Clinica(Paciente Nuevo)" formVersion="1.0">
 
     <style type="text/css">
         #who-when-where {
