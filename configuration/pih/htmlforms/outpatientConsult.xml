@@ -351,7 +351,7 @@
         <encounterDate default="now"/>
         <encounterProviderAndRole default="currentUser" encounterRole="4f10ad1a-ec49-48df-98c7-1391c6ac7f05"
                                           required="true"/>
-
+        <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
     </div>
 
     <section id="exam-2" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="Examen Fisico">
