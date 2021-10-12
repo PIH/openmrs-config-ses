@@ -131,6 +131,21 @@
                 display: none;
             }
         </ifMode>
+
+        .regional-exam > .section-container-color > p > span {
+                display: block;
+                clear: both;
+            }
+            .regional-exam > .section-container-color > p > input {
+                display: block;
+                margin-top: 8px;
+            }
+            .regional-exam > .section-container-color > p > label {
+                margin-top: 4px;
+            }
+            .regional-exam > .section-container-color > p > input, .regional-exam > .section-container-color > p > label {
+                float: left;
+            }
     </style>
 
     <ifMode mode="VIEW" include="false">
@@ -154,7 +169,6 @@
                 jq('#submit').click(function() {
                     window.htmlForm.submitHtmlForm();
                 })
-
             });
         </script>
     </ifMode>
@@ -164,11 +178,81 @@
             <h3 id="general">
                 <uimessage code="pihcore.exam.general_exam.title"/>
             </h3>
-
-            <obs conceptId="CIEL:160531" labelCode="pihcore.chiefComplaint.title" />
-
+            <obs conceptId="CIEL:160531" />
         </div>
 
+    </div>
+
+    <div class="regional-exam">
+        <div class="section-container-color">
+                    <h3 id="general">
+                                Examen Regional
+                    </h3>
+                <p>
+                    <span>
+                        Examen de ojos
+                    </span>
+                        <obs conceptId="PIH:11318" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Examen de Nariz/Boca/Garganta
+                    </span>
+                        <obs conceptId="PIH:11339" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Cuello
+                    </span>
+                        <obs conceptId="PIH:11349" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Torax y pulmones
+                    </span>
+                        <obs conceptId="PIH:CHEST EXAM FINDINGS" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Cardiovascular
+                    </span>
+                        <obs conceptId="PIH:CARDIAC EXAM FINDINGS" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Abdomen
+                    </span>
+                        <obs conceptId="PIH:ABDOMINAL EXAM FINDINGS" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Genito-urinario
+                    </span>
+                        <obs conceptId="PIH:UROGENITAL EXAM FINDINGS" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Recto/ano
+                    </span>
+                        <obs conceptId="PIH:12949" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Extremidades
+                    </span>
+                        <obs conceptId="PIH:EXTREMITY EXAM FINDINGS" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+                <p>
+                    <span>
+                        Sistema nervioso
+                    </span>
+                        <obs conceptId="PIH:NEUROLOGIC EXAM FINDINGS" answerConceptIds="CIEL:1118,CIEL:1115,CIEL:1116" style="radio"/>
+                </p>
+        </div>
+    </div>
+
+    <div clas="section-container">
+        <obs conceptId="CIEL:163042" style="textarea" rows="5" labelCode="Descripción de lo anormal"/>
     </div>
 
     <br/>

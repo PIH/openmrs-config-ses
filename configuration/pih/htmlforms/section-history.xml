@@ -267,50 +267,24 @@
         </section>
     </includeIf>
 
-    <section id="family-history" sectionTag="fieldset" headerTag="legend" headerStyle="title"
-             headerCode="zl.consultNote.familyHistory.title">
-        <div class="section-container">
-            <!-- ANTECEDENTS HEREDO-COLLATERAUX -->
-            <familyHistoryRelativeCheckboxes concept="PIH:ASTHMA" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="PIH:HEART DISEASE" label="pihcore.ncd.heartdisease" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="PIH:DIABETES" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="PIH:EPILEPSY" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="CIEL:117635" comment="Hémoglobinopathie"
-                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="PIH:HYPERTENSION" label="pihcore.medicalhistory.hypertension"
-                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="PIH:TUBERCULOSIS" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <br/>
-            <familyHistoryRelativeCheckboxes id="familyCancer" class="medicalHistoryText famHistory"
-                                             concept="CIEL:116031" label="Cancer"
-                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"
-                                             specify="true"/>
-
-            <br/>
-            <familyHistoryRelativeCheckboxes id="familyOther" class="medicalHistoryText famHistory"
-                                             concept="PIH:OTHER" code="pihcore.other"
-                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"
-                                             specify="true"/>
-        </div>
-    </section>
-
-    <section id="patient-history" sectionTag="fieldset" headerTag="legend" headerStyle="title"
+        <section id="patient-history" sectionTag="fieldset" headerTag="legend" headerStyle="title"
              headerCode="zl.consultNote.patientHistory.title">
         <div class="section-container-color">
             <!-- ANTECEDENTS PERSONNELS / HABITUDES -->
 
             <div class="two-columns">
                 <!-- Allergy is intentionally ommitted because it should be handled in more detail through the Allergy UI -->
-                <pastMedicalHistoryCheckbox concept="PIH:ASTHMA" label="pihcore.ncd.asthma"/>
+                <pastMedicalHistoryCheckbox concept="PIH:DIABETES"/>
+                <pastMedicalHistoryCheckbox concept="PIH:HYPERTENSION" label="pihcore.medicalhistory.hypertension"/>
                 <pastMedicalHistoryCheckbox concept="PIH:HEART DISEASE" label="pihcore.ncd.heartdisease" specify="true" class="medicalHistoryText patientHistory" />
+                <pastMedicalHistoryCheckbox concept="PIH:TUBERCULOSIS"/>
+                <pastMedicalHistoryCheckbox concept="PIH:ASTHMA" label="pihcore.ncd.asthma"/>
                 <pastMedicalHistoryCheckbox concept="PIH:SURGERY" label="pihcore.testLocation.surgery" specify="true" class="medicalHistoryText patientHistory"/>
                 <pastMedicalHistoryCheckbox concept="PIH:Traumatic Injury" specify="true" class="medicalHistoryText patientHistory"/>
                 <!-- TODO paper form has Surgery/Trauma. verify splitting okay -->
                 <pastMedicalHistoryCheckbox concept="PIH:EPILEPSY"/>
                 <pastMedicalHistoryCheckbox concept="CIEL: 117635" comment="Hemoglobinopathy" specify="true"
                                             class="medicalHistoryText patientHistory"/>
-                <pastMedicalHistoryCheckbox concept="PIH:HYPERTENSION" label="pihcore.medicalhistory.hypertension"/>
-                <pastMedicalHistoryCheckbox concept="PIH:DIABETES"/>
                 <pastMedicalHistoryCheckbox concept="CIEL:138405" label="pihcore.lab.hiv.title"/>
                 <pastMedicalHistoryCheckbox concept="PIH:SEXUALLY TRANSMITTED INFECTION" label="pihcore.medicalhistory.sti"
                                             specify="true" class="medicalHistoryText patientHistory"/>
@@ -319,7 +293,7 @@
                                             specify="true" class="medicalHistoryText patientHistory"/>
                 <pastMedicalHistoryCheckbox concept="PIH:MALNUTRITION"/>
                 <pastMedicalHistoryCheckbox concept="PIH:MEASLES"/>
-                <pastMedicalHistoryCheckbox concept="PIH:TUBERCULOSIS"/>
+                
                 <pastMedicalHistoryCheckbox concept="PIH:VARICELLA"/>
                 <pastMedicalHistoryCheckbox concept="PIH:Diphtheria"/>
                 <pastMedicalHistoryCheckbox concept="PIH:ACUTE RHEUMATIC FEVER" label="pihcore.acuteRheumaticFever.abbrev"/>
@@ -332,6 +306,38 @@
                 <pastMedicalHistoryCheckbox concept="PIH:47" />
                 <pastMedicalHistoryCheckbox concept="PIH:Eclampsia" />
             </includeIf>
+
+            <obs conceptId="CIEL:163042" style="textarea" labelCode="pihcore.comment"/>
+        </div>
+    </section>
+
+    <section id="family-history" sectionTag="fieldset" headerTag="legend" headerStyle="title"
+             headerCode="zl.consultNote.familyHistory.title">
+        <div class="section-container">
+            <!-- ANTECEDENTS HEREDO-COLLATERAUX -->
+            <familyHistoryRelativeCheckboxes concept="PIH:DIABETES" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <familyHistoryRelativeCheckboxes concept="PIH:HYPERTENSION" label="pihcore.medicalhistory.hypertension"
+                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <familyHistoryRelativeCheckboxes concept="PIH:HEART DISEASE" label="pihcore.ncd.heartdisease" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>                                 
+            <familyHistoryRelativeCheckboxes concept="PIH:TUBERCULOSIS" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <familyHistoryRelativeCheckboxes concept="PIH:ASTHMA" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            
+            <familyHistoryRelativeCheckboxes concept="CIEL:117635" comment="Hémoglobinopathie"
+                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <br/>
+            <familyHistoryRelativeCheckboxes id="familyCancer" class="medicalHistoryText famHistory"
+                                             concept="CIEL:116031" label="Cancer"
+                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"
+                                             specify="true"/>
+            <br/>
+            <familyHistoryRelativeCheckboxes concept="PIH:EPILEPSY" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <familyHistoryRelativeCheckboxes concept="PIH:Glaucoma" label="Glaucoma" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <familyHistoryRelativeCheckboxes concept="PIH:12816" label="Covid-19" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
+            <br/>
+            <familyHistoryRelativeCheckboxes id="familyOther" class="medicalHistoryText famHistory"
+                                             concept="PIH:OTHER" code="pihcore.other"
+                                             relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"
+                                             specify="true"/>
         </div>
     </section>
 
@@ -727,13 +733,10 @@
     </section>
 
     <section id="diagnostic-tests-history" sectionTag="fieldset" headerTag="legend" headerStyle="title"
-             headerCode="zl.consultNote.diagnosticTestsHistory.title">
+             headerCode="Alergias">
         <div class="section-container">
             <!-- Examens paracliniques déjà effectués, Résultats, Date -->
             <p>
-                <label>
-                    <uimessage code="zl.consultNote.diagnosticTestsHistory.comment"/>
-                </label>
                 <obs conceptId="PIH:DIAGNOSTIC TESTS HISTORY" style="textarea"/>
             </p>
         </div>
