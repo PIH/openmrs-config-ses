@@ -5,6 +5,7 @@
   "site": "PERU",
   "components": [
     "allergies",
+    "appointmentScheduling",
     "clinicianDashboard",
     "conditionList",
     "consult",
