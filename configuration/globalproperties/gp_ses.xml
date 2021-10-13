@@ -15,7 +15,6 @@
         </globalProperty>
         <globalProperty>
             <property>emr.concept.diagnosisSetOfSets</property>
-            <!-- **Mexico** diagnosis set of sets - TODO create Peru Dx concept set -->
             <!--Peru diagnosis set of sets-->
             <value>df515ed4-be25-4a55-a0e4-b0baf03fc52e</value>
         </globalProperty>
