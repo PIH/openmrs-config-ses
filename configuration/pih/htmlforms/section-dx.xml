@@ -5,7 +5,7 @@
 
             #data-collection {
                 display: inline-block;
-                width: 58%;
+                width: 100%;
                 vertical-align: top;
             }
 
@@ -23,10 +23,34 @@
                 min-width: 100%;
             }
 
-            p.radio > * {
-            display: inline;
-            float: none !important;
-            min-width: initial;
+            .section-container-color {
+                background: #F2F2F2;
+                box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+                padding: 10px 5px 10px 15px;
+                line-height: 1.5em; /*add this for vertical spacing between elements*/
+            }
+            
+            .diagnosis-field {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .inline {
+                display: inline-block;
+            }
+            .inline > span {
+                display: block;
+                clear: both;
+            }
+            .inline > span > input {
+                display: block;
+                margin-top: 8px;
+            }
+            .inline > span > label {
+                margin-top: 4px;
+            }
+            .inline > span > label, .inline > span > input {
+                float: left;
             }
 
         </ifMode>
@@ -88,8 +112,7 @@
                     jq('#show-more-diagnosis-button').show();
                 });
 
-            })
-
+            });
         </script>
     </ifMode>
 
@@ -98,9 +121,10 @@
             <span id="diagnosis-{0}" class="diagnosis">
                 <obsgroup groupingConceptId="PIH:Visit Diagnoses">
                     <h3>
-                        Diagnostico
+                        <uimessage code="Diagnostico"/>
+                        {0}
                     </h3>
-                    <fieldset clas="diagnosis">
+                    <fieldset class="diagnosis-field">
                         <p class="field-error" style="display:none"></p>
                         <p>
                             <label>Nombre del diagnostico</label>
