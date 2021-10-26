@@ -510,8 +510,9 @@
                      showUnits="emr.units.percent" unitsCssClass="append-to-value"/>
             </p>
         </fieldset>
-        <fieldset>
+        <fieldset field-separator=" ">
             <legend>Observaciones</legend>
+            <h3>Observaciones</h3>
             
             <p>
                 <obs conceptId="PIH:10137" style="textarea" rows="5"/>

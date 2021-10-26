@@ -23,10 +23,15 @@
                 min-width: 100%;
             }
 
+            p.radio > * {
+            display: inline;
+            float: none !important;
+            min-width: initial;
+            }
+
         </ifMode>
     </style>
     <ifMode mode="VIEW" include="false">
-        <h3>Diagnostico</h3>
 
         <script type="text/javascript">
             jq(document).ready(function() {
@@ -46,18 +51,74 @@
                 })
 
             });
+
+            jq(function() {
+
+                var hasValue = function(element) {
+                    return jq(element).find('.diagnosis-name input').val();
+                };
+
+                var hideOtherDiagnosis = function() {
+                    jq('#diagnosis-2').hide();
+                    jq('#diagnosis-3').hide();
+                    jq('#diagnosis-4').hide();
+                    jq('#diagnosis-5').hide();
+                    jq('#diagnosis-6').hide();
+                    jq('#diagnosis-7').hide();
+                    jq('#diagnosis-8').hide();
+                };
+
+                if (!hasValue('#diagnosis-2') &amp;&amp; !hasValue('#diagnosis-3') &amp;&amp; !hasValue('#diagnosis-4')
+                    &amp;&amp; !hasValue('#diagnosis-5') &amp;&amp; !hasValue('#diagnosis-6') &amp;&amp;
+                    !hasValue('#diagnosis-7')
+                    &amp;&amp; !hasValue('#diagnosis-8')) {
+                        hideOtherDiagnosis();
+                        jq('#show-more-diagnosis-button').show();
+                }
+
+                jq('#show-more-diagnosis-button').click(function() {
+                    jq('.diagnosis').show();
+                    jq('#show-more-diagnosis-button').hide();
+                    jq('#show-less-diagnosis-button').show();
+                });
+
+                jq('#show-less-diagnosis-button').click(function() {
+                    hideOtherDiagnosis();
+                    jq('#show-less-diagnosis-button').hide();
+                    jq('#show-more-diagnosis-button').show();
+                });
+
+            })
+
         </script>
     </ifMode>
 
-    <div id="data-collection">
-        <encounterDiagnosesByObs selectedDiagnosesTarget="#encounter-diagnoses-target"/>
-        <p>
-            <label>Nota Clínica</label>
-            <obs conceptId="PIH:CLINICAL IMPRESSION COMMENTS" style="textarea" rows="5"/>
-        </p>
-    </div>
-
-    <div id="encounter-diagnoses-target">
+    <div id="section-container-color">
+        <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
+            <span id="diagnosis-{0}" class="diagnosis">
+                <obsgroup groupingConceptId="PIH:Visit Diagnoses">
+                    <h3>
+                        Diagnostico
+                    </h3>
+                    <fieldset clas="diagnosis">
+                        <p class="field-error" style="display:none"></p>
+                        <p>
+                            <label>Nombre del diagnostico</label>
+                            <obs id="name{0}" class="diagnosis-name" conceptId="PIH:DIAGNOSIS" style="autocomplete" answerConceptSetIds="34280962-a42d-43e1-a6bd-fcff6c31f7e3"/>
+                        </p>
+                        <p class="inline">
+                            <obs id="confirmation{0}" class="confirmation-radio Input" conceptId="PIH:CLINICAL IMPRESSION DIAGNOSIS CONFIRMED" style="radio" answerConceptIds="PIH:CONFIRMED,PIH:PRESUMED,CIEL:1688" answerLabels="Definitivo,Probable,Repetido"/>
+                        </p>
+                    </fieldset>
+                </obsgroup>
+            </span>
+        </repeat>
+        <button id="show-more-diagnosis-button" type="button" style="display:none">
+                <uimessage code="pihcore.showMore"/>
+        </button>
+        <button id="show-less-diagnosis-button" type="button" style="display:none">
+                <uimessage code="pihcore.showLess"/>
+        </button>
     </div>
 
     <ifMode mode="VIEW" include="false">
