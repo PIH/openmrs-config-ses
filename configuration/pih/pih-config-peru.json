@@ -63,14 +63,8 @@
   "findPatientColumnConfig": [
     {
       "type": "identifier",
-      "label": "DNI",
-      "value": "${patientIdentifierType.DNI.uuid}",
-      "width": "80px"
-    },
-    {
-      "type": "identifier",
-      "label": "Pasaporte",
-      "value": "${patientIdentifierType.Passport.uuid}",
+      "label": "Identificador(es)",
+      "value": "${patientIdentifierType.DNI.uuid},${patientIdentifierType.Passport.uuid}",
       "width": "80px"
     },
     {
