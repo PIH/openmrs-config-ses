@@ -3,11 +3,11 @@
         <globalProperty>
             <!-- note tht default locale must be set before changing the allowed list -->
             <property>default_locale</property>
-            <value>es</value>
+            <value>es_PE</value>
         </globalProperty>
         <globalProperty>
             <property>locale.allowed.list</property>
-            <value>en, es</value>
+            <value>en, es_PE</value>
         </globalProperty>
         <globalProperty>
             <property>coreapps.defaultPatientIdentifierLocation</property>
