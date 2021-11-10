@@ -78,6 +78,72 @@
        - .section {
         width: 100%;
         }
+
+        @media print 
+            {
+                .navbar {
+                    display: block;
+                }
+                .identifiers span {
+                    background-color: transparent !important;
+                }
+                div.logo{
+                    display: block;
+                }
+                header{
+                    display: block;
+                }
+                #navbarSupportedContent > ul > li.nav-item.identifier{
+                    display: block;
+                    color: #ffffff;
+                }
+                #contactInfoContent > div > span:nth-child(1){
+                    border-bottom-style: dotted !important;
+                    border-bottom-width: 1px !important;
+                    display: inline !important;
+                }
+                #contactInfoContent > div > span.ml-2{
+                    border-bottom-style: dotted !important;
+                    border-bottom-width: 1px !important;
+                    display: inline !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(1){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(3){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(5){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                }
+                #navbarSupportedContent > ul > li.change-location > a > i.icon-map-marker.small{
+                    display: none;
+                }
+                #navbarSupportedContent > ul > li.change-location > a > i.icon-caret-down.link{
+                    display: none !important;
+                }
+                #navbarSupportedContent > ul > li.nav-item.logout{
+                    display: none;
+                }
+                body > header > nav > button{
+                    display: none;
+                }
+                #buttons {
+                    display: none;
+                }
+                #show-more-medication  {
+                    display: none !important;
+                }
+                #show-less-medication{
+                    display: none;
+                }
+            }
     </style>
 
 
