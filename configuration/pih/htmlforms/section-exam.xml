@@ -99,16 +99,19 @@
                     border-bottom-style: dotted;
                     border-bottom-width: 1px;
                     display: inline;
+                    font-size: 20px !important;
                 }
                 #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(3){
                     border-bottom-style: dotted;
                     border-bottom-width: 1px;
                     display: inline;
+                    font-size: 20px !important;
                 }
                 #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(5){
                     border-bottom-style: dotted;
                     border-bottom-width: 1px;
                     display: inline;
+                    font-size: 20px !important;
                 }
                 #navbarSupportedContent > ul > li.change-location > a > i.icon-map-marker.small{
                     display: none;
