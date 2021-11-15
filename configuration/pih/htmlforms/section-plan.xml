@@ -59,6 +59,75 @@
             padding: 0px 3px 0px 0px
         }
 
+        @media print 
+            {
+                .navbar {
+                    display: block;
+                }
+                .identifiers span {
+                    background-color: transparent !important;
+                }
+                div.logo{
+                    display: block;
+                }
+                header{
+                    display: block;
+                }
+                #navbarSupportedContent > ul > li.nav-item.identifier{
+                    display: block;
+                    color: #ffffff;
+                }
+                #contactInfoContent > div > span:nth-child(1){
+                    border-bottom-style: dotted !important;
+                    border-bottom-width: 1px !important;
+                    display: inline !important;
+                }
+                #contactInfoContent > div > span.ml-2{
+                    border-bottom-style: dotted !important;
+                    border-bottom-width: 1px !important;
+                    display: inline !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(1){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                    font-size: 20px !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(3){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                    font-size: 20px !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(5){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                    font-size: 20px !important;
+                }
+                #navbarSupportedContent > ul > li.change-location > a > i.icon-map-marker.small{
+                    display: none;
+                }
+                #navbarSupportedContent > ul > li.change-location > a > i.icon-caret-down.link{
+                    display: none !important;
+                }
+                #navbarSupportedContent > ul > li.nav-item.logout{
+                    display: none;
+                }
+                body > header > nav > button{
+                    display: none;
+                }
+                #buttons {
+                    display: none;
+                }
+                #show-more-medication  {
+                    display: none !important;
+                }
+                #show-less-medication{
+                    display: none;
+                }
+            }
+
     </style>
 
     <ifMode mode="VIEW" include="false">
@@ -69,57 +138,6 @@
             htmlForm.getBeforeValidation().push(function() {
 
                 var valid = true;
-
-                // validate medication section
-                jq('fieldset.medication').each(function() {
-
-                    // clear out any existing error messages
-                    jq(this).find('.field-error').first().html('');
-
-                    //var medication = (jq(this).find('.medication-name input').val()).trim();
-
-                    // UHM-3781 we need to look for the value set by the autocomplete widget.
-                    // The value should be in the format of Drug:DRUG_ID
-                    var medication = jq(this).find('.medication-name input[type=hidden]').val();
-
-                    var dose = jq(this).find('.dose input').val();
-                    var doseUnits = jq(this).find('.dose-unit select').val();
-                    var frequency = jq(this).find('.frequency select').val();
-                    var duration = jq(this).find('.duration input').val();
-                    var durationUnits = jq(this).find('.duration-unit select').val();
-                    var instructions = jq(this).find('.medication-instructions input').val();
-
-                    if (!medication &amp;&amp; (dose || doseUnits || frequency || duration || durationUnits || instructions)) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                        code="pihcore.visitNote.plan.medications.error.noMedication"/>. ").show();
-                    }
-
-                    if (dose &amp;&amp; !doseUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDoseUnits"/>. ").show();
-                    }
-
-                    if (!dose &amp;&amp; doseUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDose"/>. ").show();
-                    }
-
-                    if (duration &amp;&amp; !durationUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDurationUnits"/>. ").show();
-                    }
-
-                    if (!duration &amp;&amp; durationUnits) {
-                        valid = false;
-                        jq(this).find('.field-error').first().append("<uimessage
-                            code="pihcore.visitNote.plan.medications.error.noDuration"/>. ").show();
-                    }
-
-                });
 
                 // validate that if a disposition has been selected, all the fields associated with that disposition have also been filled out
                 jq('#disposition .field-error').first().html('').hide(); // hide any previous error
@@ -136,45 +154,7 @@
             });
 
             jq(function() {
-
-                var hasValue = function(element) {
-                    return jq(element).find('.medication-name input').val();
-                };
-
-                var hideOtherMeds = function() {
-                    jq('#medication-2').hide();
-                    jq('#medication-3').hide();
-                    jq('#medication-4').hide();
-                    jq('#medication-5').hide();
-                    jq('#medication-6').hide();
-                    jq('#medication-7').hide();
-                    jq('#medication-8').hide();
-                };
-
-                if (!hasValue('#medication-2') &amp;&amp; !hasValue('#medication-3') &amp;&amp; !hasValue('#medication-4')
-                    &amp;&amp; !hasValue('#medication-5') &amp;&amp; !hasValue('#medication-6') &amp;&amp;
-                    !hasValue('#medication-7')
-                    &amp;&amp; !hasValue('#medication-8')) {
-                        hideOtherMeds();
-                        jq('#show-more-medications-button').show();
-                }
-
-                jq('#show-more-medications-button').click(function() {
-                    jq('.medication').show();
-                    jq('#show-more-medications-button').hide();
-                    jq('#show-less-medications-button').show();
-                });
-
-                jq('#show-less-medications-button').click(function() {
-                    hideOtherMeds();
-                    jq('#show-less-medications-button').hide();
-                    jq('#show-more-medications-button').show();
-                });
-
-                jq('#disposition select:first').change(function() {
-                    jq('#disposition .field-error').first().html('').hide(); // hide any previous error if disposition is changed
-                });
-
+                setUpExpandableSection('medication');
             })
 
         </script>
@@ -326,11 +306,11 @@
                     </obsgroup>
                 </span>
             </repeat>
-            <button id="show-more-medications-button" type="button" style="display:none">
-                <uimessage code="pihcore.showMore"/>
+            <button id="show-more-medication" type="button" style="display:none">
+                +
             </button>
-            <button id="show-less-medications-button" type="button" style="display:none">
-                <uimessage code="pihcore.showLess"/>
+            <button id="show-less-medication" type="button" style="display:none">
+                -
             </button>
         </div>
 
