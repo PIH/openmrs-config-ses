@@ -1,10 +1,15 @@
 <config>
     <globalProperties>
+        <!-- we need to add es_PE as an allowed locale before setting it as a default locale -->
         <globalProperty>
-            <!-- note tht default locale must be set before changing the allowed list -->
+            <property>locale.allowed.list</property>
+            <value>en, es, es_PE</value>
+        </globalProperty>
+        <globalProperty>
             <property>default_locale</property>
             <value>es_PE</value>
         </globalProperty>
+        <!-- remove es as an allowed locale after setting es_PE as the default -->
         <globalProperty>
             <property>locale.allowed.list</property>
             <value>en, es_PE</value>
