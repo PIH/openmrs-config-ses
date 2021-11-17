@@ -21,7 +21,7 @@
     "patientRegistration",
     "patientDocuments",
     "peruLabOrdersAnalysisRequests",
-    "peruPrescriptions",
+    "prescription",
     "programs",
     "systemAdministration",
     "tb",
