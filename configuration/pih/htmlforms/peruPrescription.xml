@@ -30,17 +30,6 @@
                 margin-top: 10px;
             }
 
-        .two-columns {
-            column-count: 2;
-            -webkit-column-count: 2;
-            -moz-column-count: 2;
-        }
-
-        .three-columns {
-            column-count: 3;
-            -webkit-column-count: 3;
-            -moz-column-count: 3;
-        }
 
         p.radio > * {
             display: inline;
