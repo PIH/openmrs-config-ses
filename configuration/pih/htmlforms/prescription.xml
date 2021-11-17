@@ -1,0 +1,222 @@
+<htmlform formUuid="6e28a6e0-3d36-44bf-846c-e513f34a6990"
+          formEncounterType="03546c8c-0c2c-4a58-80a0-0e5d112464ac"
+          formName="Receta" formVersion="1.0">
+    <postSubmissionAction class="org.openmrs.module.pihcore.htmlformentry.action.ApplyDispositionAction"/>
+
+    <style type="text/css">
+        <ifMode mode="VIEW" include="false">
+        form fieldset {
+            display: block;
+        }
+
+        #test-orders {
+        }
+
+
+        #test-orders input[type=checkbox] {
+            float: none;
+            vertical-align: middle;
+        }
+
+        #test-orders p {
+            margin-bottom: 5px
+        }
+
+        #test-orders span, #test-orders label {
+            display: inline !important;
+            vertical-align: middle;
+        }
+        #buttons {
+                margin-top: 10px;
+            }
+
+
+        p.radio > * {
+            display: inline;
+            float: none !important;
+            min-width: initial;
+        }
+
+        .section-container-color {
+            background: #F2F2F2;
+            box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+            padding: 10px 5px 10px 15px;
+            line-height: 1.5em; /*add this for vertical spacing between elements*/
+        }
+
+        .section {
+            width: 100%;
+        }
+
+        label {
+            padding: 0px 3px 0px 0px
+        }
+            <!--Media print specified for this page-->
+
+            @media print 
+            {
+                .navbar {
+                    display: block;
+                }
+                .identifiers span {
+                    background-color: transparent !important;
+                }
+                div.logo{
+                    display: block;
+                }
+                header{
+                    display: block;
+                }
+                #navbarSupportedContent > ul > li.nav-item.identifier{
+                    display: block;
+                    color: #ffffff;
+                }
+                #contactInfoContent > div > span:nth-child(1){
+                    border-bottom-style: dotted !important;
+                    border-bottom-width: 1px !important;
+                    display: inline !important;
+                }
+                #contactInfoContent > div > span.ml-2{
+                    border-bottom-style: dotted !important;
+                    border-bottom-width: 1px !important;
+                    display: inline !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(1){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                    font-size: 20px !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(3){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                    font-size: 20px !important;
+                }
+                #content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div:nth-child(5){
+                    border-bottom-style: dotted;
+                    border-bottom-width: 1px;
+                    display: inline;
+                    font-size: 20px !important;
+                }
+                #navbarSupportedContent > ul > li.nav-item.identifier{
+                    visibility: visible;
+                }
+                #navbarSupportedContent > ul > li.change-location > a > i.icon-map-marker.small{
+                    display: none;
+                }
+                #navbarSupportedContent > ul > li.change-location > a > i.icon-caret-down.link{
+                    display: none !important;
+                }
+                #navbarSupportedContent > ul > li.nav-item.logout{
+                    display: none;
+                }
+                body > header > nav > button{
+                    display: none;
+                }
+                #buttons {
+                    display: none;
+                }
+                #show-more-medication  {
+                    display: none !important;
+                }
+                #show-less-medication{
+                    display: none;
+                }
+            }
+        </ifMode>
+    </style>
+    <ifMode mode="VIEW" include="false">
+
+        <script type="text/javascript">
+            jq(document).ready(function() {
+
+                jq('#submit').click(function() {
+                    window.htmlForm.submitHtmlForm();
+                })
+
+            });
+
+            jq(function(){
+                setUpExpandableSection('medication');
+
+            });
+        </script>
+    </ifMode>
+    
+    <div class="hidden" id="encounter-details">
+        <encounterDate id="encounterDate" default="now"/>
+        <encounterProviderAndRole default="currentUser" encounterRole="4f10ad1a-ec49-48df-98c7-1391c6ac7f05" required="true"/>
+        <encounterLocation default="SessionAttribute:emrContext.sessionLocationId" tags="Primary Care Consult Location"/>
+    </div>
+
+     <section id="drug-orders" sectionTag="fieldset" headerTag="legend" headerStyle="title">
+
+        <div class="section-container-color">
+            <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
+                <span id="medication-{0}" class="medication">
+                    <obsgroup groupingConceptId="PIH:Prescription construct" showIfEmpty="false">
+                        <h3>
+                            <uimessage code="pihcore.visitNote.plan.medication"/>
+                            {0}
+                        </h3>
+                        <fieldset class="medication">
+                            <p class="field-error" style="display:none"></p>
+                            <p>
+                                <label>
+                                    <uimessage code="pihcore.visitNote.plan.name"/>
+                                </label>
+                                <obs id="name{0}" class="medication-name" conceptId="PIH:MEDICATION ORDERS"
+                                     answerDrugs="true"/>
+                            </p>
+                            <p class="inline">
+                                <label>
+                                    <uimessage code="pihcore.visitNote.plan.dose"/>
+                                </label>
+                                <obs id="dose{0}" class="dose doseInput" conceptId="CIEL:160856"/>
+                                <obs id="doseUnit{0}" class="dose-unit doseInput select-arrow"
+                                     conceptId="PIH:Dosing units coded"
+                                     answerConceptIds="CIEL:161553,CIEL:161554,CIEL:162263,PIH:APPLICATION,CIEL:1608,CIEL:1513,CIEL:162356,CIEL:162366,CIEL:162370,PIH:Pump,PIH:SACHET,CIEL:162264"
+                                     answerCodes="pihcore.visitNote.plan.medication.units.mg,pihcore.visitNote.plan.medication.units.g,pihcore.visitNote.plan.medication.units.mL,pihcore.visitNote.plan.medication.units.application,pihcore.visitNote.plan.medication.units.capsule,pihcore.visitNote.plan.medication.units.tablet,pihcore.visitNote.plan.medication.units.drop,pihcore.visitNote.plan.medication.units.mcg,pihcore.visitNote.plan.medication.units.patch,pihcore.visitNote.plan.medication.units.pump,pihcore.visitNote.plan.medication.units.sachet,pihcore.visitNote.plan.medication.units.IU"/>
+
+                            </p>
+
+                            <p class="inline">
+                                <label>
+                                    <uimessage code="pihcore.visitNote.plan.duration"/>
+                                </label>
+                                <obs id="duration{0}" class="duration doseInput" conceptId="CIEL:159368"/>
+                                <obs id="durationUnit{0}" class="duration-unit select-arrow" conceptId="PIH:TIME UNITS"
+                                     answerConceptIds="PIH:Days,PIH:1073,PIH:Months"/>
+                            </p>
+
+                            <p>
+                                <label>
+                                    <uimessage code="pihcore.visitNote.plan.instructions"/>
+                                </label>
+                                <obs id="instructions{0}" class="medication-instructions"
+                                     conceptId="PIH:Prescription instructions non-coded"/>
+                            </p>
+                        </fieldset>
+                    </obsgroup>
+                </span>
+            </repeat>
+            <button id="show-more-medication" type="button" style="display:none">
+                +
+            </button>
+            <button id="show-less-medication" type="button" style="display:none">
+                -
+            </button>
+        </div>
+
+    </section>
+
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <button id="submit" class="submitButton confirm right"><uimessage code="mirebalais.save"/><i class="icon-spinner icon-spin icon-2x" style="display: none; margin-left: 10px;"></i></button>
+            <button id="cancel" type="button" class="cancel"><uimessage code="emr.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>
