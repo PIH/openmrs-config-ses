@@ -1,0 +1,36 @@
+<htmlform id="check-in-form" formUuid="8757a568-23d1-4e18-907b-728b56ca7756" formName="Checkin"
+          formEncounterType="55a0d3ea-a4d7-4e88-8f01-5aceb2d3c61b" formVersion="2.0">
+
+    <ifMode mode="VIEW" include="true">
+                <!-- a template to display the "view" version of an html form provided by the htmlfromentryui getAsHtml method
+            specifically designed to reformat our "one-question-per-screen" forms to should line-by-line obs -->
+
+        <style>
+        
+        </style>
+
+    </ifMode>
+
+    <section id="checkin" sectionTag="section" headerStyle="title" headerLabel="">
+
+            <span id="most-recent-encounter-title" style="display:none"><!--The Most Recent Encounter app in Core Apps replaces this with the "most recent" label--></span>
+
+                <fieldset class="type-of-visit-question">
+                    <legend>
+                        <uimessage code="mirebalais.retrospectiveCheckin.provider.label"/>
+                    </legend>
+                    <h3>
+                        <uimessage code="mirebalais.retrospectiveCheckin.provider.label"/>
+                    </h3>
+
+                    <p class="left">
+                        <encounterProviderAndRole default="currentUser" encounterRole="cbfe0b9d-9923-404c-941b-f048adc8cdc0"
+                                                  required="true"/>
+                    </p>
+                </fieldset>
+
+        </section>
+
+    <appointmentCheckIn/>
+
+</htmlform>

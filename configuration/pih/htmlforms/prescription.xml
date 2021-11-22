@@ -129,6 +129,8 @@
     <ifMode mode="VIEW" include="false">
 
         <script type="text/javascript">
+            var $j = jQuery;
+
             jq(document).ready(function() {
 
                 jq('#submit').click(function() {

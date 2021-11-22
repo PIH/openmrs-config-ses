@@ -1,0 +1,46 @@
+<htmlform id="check-in-form" formUuid="0a5e8b10-e587-11e2-a28f-0800200c9a66" 
+            formName="LiveCheckin" formEncounterType="55a0d3ea-a4d7-4e88-8f01-5aceb2d3c61b" formVersion="1.1">
+
+    <includeIf velocityTest="$config.isComponentEnabled('archives')">
+        <!-- in Mirebalais we prompt for pulling dossier -->
+        <redirectOnSave url="/paperrecord/requestPaperRecord.page?patientId={{patient.id}}&amp;returnProvider=pihcore&amp;returnPage=router/appEndRouter"/>
+    </includeIf>
+
+    <includeIf velocityTest="!$config.isComponentEnabled('archives')">
+        <!-- otherwise redirect back directly to the router -->
+        <redirectOnSave url="/pihcore/router/appEndRouter.page?patientId={{patient.id}}"/>
+    </includeIf>
+
+    <ifMode mode="VIEW" include="true">
+        <!-- a template to display the "view" version of an html form provided by the htmlfromentryui getAsHtml method
+      specifically designed to reformat our "one-question-per-screen" forms to should line-by-line obs -->
+
+        <style>
+
+        </style>
+
+    </ifMode>
+
+    <section id="checkin" sectionTag="section" headerStyle="title" headerLabel="">
+
+            <span id="most-recent-encounter-title" style="display:none"><!--The Most Recent Encounter app in Core Apps replaces this with the "most recent" label--></span>
+
+                <fieldset class="type-of-visit-question">
+                    <legend>
+                        <uimessage code="mirebalais.retrospectiveCheckin.provider.label"/>
+                    </legend>
+                    <h3>
+                        <uimessage code="Persona atendiendo"/>
+                    </h3>
+
+                    <p class="left">
+                        <encounterProviderAndRole default="currentUser" encounterRole="cbfe0b9d-9923-404c-941b-f048adc8cdc0"
+                                                  required="true"/>
+                    </p>
+                </fieldset>
+
+        </section>
+
+    <appointmentCheckIn/>
+
+</htmlform>
