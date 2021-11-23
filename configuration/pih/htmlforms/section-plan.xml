@@ -184,8 +184,6 @@
         </div>
     </section>
 
-    <!-- ToDo: This section is duplicated by the section-lab-order.xml and should be replace
-         with including forms within htmlforms.  Formlets? -->
     <section id="lab-orders" sectionTag="fieldset" headerTag="legend" headerStyle="title"
              headerCode="Ordenes de laboratorio">
 
