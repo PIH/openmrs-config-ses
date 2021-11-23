@@ -376,7 +376,7 @@
                 <pastMedicalHistoryCheckbox concept="PIH:Eclampsia" />
             </includeIf>
 
-            <obs conceptId="CIEL:163042" style="textarea" labelCode="pihcore.comment"/>
+            <obs conceptId="PIH:2881" style="textarea" labelCode="pihcore.comment"/>
         </div>
     </section>
 

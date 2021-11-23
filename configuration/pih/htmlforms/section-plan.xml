@@ -58,6 +58,13 @@
         label {
             padding: 0px 3px 0px 0px
         }
+        .orderwidget-drug-section { padding: 10px; border: 1px dotted black; }
+        .order-field { display: inline-block; padding: 0px; }
+        .order-field.action { display: block; }
+        .order-field.dateActivated { padding-right: 20px; }
+        .order-field-label { display: inline-block; padding-right: 5px; vertical-align: middle; }
+        .order-field-label:after { content: ""; white-space: pre; }
+        .order-field-widget { display: inline-block; }
 
         @media print 
             {
@@ -155,6 +162,8 @@
 
             jq(function() {
                 setUpExpandableSection('medication');
+                setUpExpandableSection('tests');
+                setUpExpandableSection('image');
             })
 
         </script>
@@ -175,73 +184,62 @@
         </div>
     </section>
 
-    <!-- ToDo: This section is duplicated by the section-lab-order.xml and should be replace
-         with including forms within htmlforms.  Formlets? -->
-    <section id="test-orders" sectionTag="fieldset" headerTag="legend" headerStyle="title"
-             headerCode="Ordenes de laboratorio de SES">
-        <div class="section-container-color">
-            <div class="three-columns">
-                <repeat>
-                    <template>
-                        <p>
-                            <obs conceptId="PIH:Lab test ordered coded"
-                                answerConceptId="{labName}"
-                                style="checkbox"/>
-                        </p>
-                    </template>
-                    <render labName="SES Lab:Exam_001" labelCode="Baciloscopía"/>
-                    <render labName="SES Lab:Exam_002" labelCode="PR GENOTYPE MTBDRsl v.2.0 (v1.0)"/>
-                    <render labName="SES Lab:Exam_003" labelCode="Extracción ADN de M. tuberculosis"/>
-                    <render labName="SES Lab:Exam_004" labelCode="Prueba de Sensibilidad a drogas Antituberculosas de 2da Línea LEVO (v1.0)"/>
-                    <render labName="SES Lab:Exam_005" labelCode="Prueba de Sensibilidad a drogas Antituberculosas de 1ra Línea (PZA)"/>
-                    <render labName="SES Lab:Exam_006" labelCode="PCR IS6110 para Detección de M. tuberculosis"/>
-                    <render labName="SES Lab:Exam_007" labelCode="Prueba de Sensibilidad a drogas Antituberculosas de 1ra Línea (SIRE)"/>
-                    <render labName="SES Lab:Exam_008" labelCode="GeneXpert MTB/RIF Ultra"/>
-                    <render labName="SES Lab:Exam_009" labelCode="PCR para diagnóstico de M. tuberculosis"/>
-                    <render labName="SES Lab:Exam_010" labelCode="RT-PCR PARA EN TIEMPO REAL PARA DETECCIÓN DE SARS - CoV.2 (COVID-19)"/>
-                    <render labName="SES Lab:Exam_011"/>
-                    <render labName="SES Lab:Exam_012"/>
-                    <render labName="SES Lab:Exam_013"/>
-                    <render labName="SES Lab:Exam_014"/>
-                    <render labName="SES Lab:Exam_015"/>
-                    <render labName="SES Lab:Exam_016"/>
-                    <render labName="SES Lab:Exam_017"/>
-                    <render labName="SES Lab:Exam_018"/>
-                    <render labName="SES Lab:Exam_019"/>
-                    <render labName="SES Lab:Exam_020"/>
-                    <render labName="SES Lab:Exam_021"/>
-                </repeat>
-            </div>
+    <section id="lab-orders" sectionTag="fieldset" headerTag="legend" headerStyle="title"
+             headerCode="Ordenes de laboratorio">
+
+        <div id="tests-section">
+            <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
+                <span id="tests-{0}" class="tests">
+                        <h3>
+                            <uimessage code="Prueba de laboratorio"/>
+                            {0}
+                        </h3>
+                        <fieldset class="tests-field">
+                            <p class="field-error" style="display:none"></p>
+                            <p>
+                                <label>Nombre de examen</label>
+                                <obs id="name{0}" class="tests-name" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES_IMAGENES:COR_IMAGEN"/>
+                            </p>
+                        </fieldset>
+                </span>
+            </repeat>
+            <button id="show-more-tests" type="button" style="display:none">
+                    +
+            </button>
+            <button id="show-less-tests" type="button" style="display:none">
+                    -
+            </button>
         </div>
 
     </section>
 
     <section id="radiology-orders" sectionTag="fieldset" headerTag="legend" headerStyle="title"
-             headerCode="pihcore.rad_order.title">
-        <div class="section-container-color">
+             headerCode="Ordenes de radiología">
 
-            <p>
-                <label>1 vista</label>
-                <obs conceptId="PIH:Radiology image ordered"
-                         answerConceptIds="PIH:Chest 1 view (XRay),PIH:Abdomen 1 view (XRay),PIH:Pelvis 1 view (XRay),PIH:Spine 1 view (XRay),PIH:11627"
-                         answerCodes="Pecho,Abdomen,Pelvis,Columna vertebral,Huesos nasales"
-                         style="dropdown"/>
-            </p>
-            <p>
-                <label>2 vistas</label>
-                <obs conceptId="PIH:Radiology image ordered"
-                    answerConceptIds="PIH:Chest 2 views (XRay),PIH:Hand right 2 views (XRay),PIH:Hand left 2 views (XRay)"
-                         answerCodes="Pecho,Huesos nasales,Mano derecha,Mano izquierda"
-                         style="dropdown"/>
-            </p>
-            <p>
-                <label>3 vistas</label>
-                <obs conceptId="PIH:Radiology image ordered"
-                    answerConceptIds="PIH:Facial bones 3 views (XRay),PIH:11607"
-                         answerCodes="Huesos faciales,Mastoide"
-                         style="dropdown"/>
-            </p>
+        <div id="image-section">
+            <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
+                <span id="image-{0}" class="image">
+                        <h3>
+                            <uimessage code="Radiografia"/>
+                            {0}
+                        </h3>
+                        <fieldset class="image-field">
+                            <p class="field-error" style="display:none"></p>
+                            <p>
+                                <label>Nombre de radiografia</label>
+                                <obs id="name{0}" class="image-name" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
+                            </p>
+                        </fieldset>
+                </span>
+            </repeat>
+            <button id="show-more-image" type="button" style="display:none">
+                    +
+            </button>
+            <button id="show-less-image" type="button" style="display:none">
+                    -
+            </button>
         </div>
+
     </section>
 
     <!-- Stolen from the dispensing module, but using prescription construct instead of dispensing -->

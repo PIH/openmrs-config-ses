@@ -195,7 +195,7 @@
 
         <obsgroup groupingConceptId="PIH:HOSPITALIZATION CONSTRUCT">
             <td>
-                <obs conceptId="CIEL:1640" allowTime="false" labelCode="Fecha"/> <!-- Admit date -->
+                <obs conceptId="PIH:5096" allowTime="false" labelCode="Fecha" allowFutureDates="true"/> <!-- Admit date -->
             </td>
         </obsgroup>
         <obs conceptId="PIH:12977" style="textarea" rows="5" labelCode="Nota"/>
