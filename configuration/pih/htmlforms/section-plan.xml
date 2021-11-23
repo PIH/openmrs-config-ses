@@ -200,7 +200,7 @@
                             <p class="field-error" style="display:none"></p>
                             <p>
                                 <label>Nombre de examen</label>
-                                <obs id="name{0}" class="tests-name" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="bf911662-f7fd-4c83-8e6c-fc8d9950e5ca"/>
+                                <obs id="name{0}" class="tests-name" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES_IMAGENES:COR_IMAGEN"/>
                             </p>
                         </fieldset>
                 </span>
