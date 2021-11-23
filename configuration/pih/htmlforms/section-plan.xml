@@ -229,7 +229,7 @@
                             <p class="field-error" style="display:none"></p>
                             <p>
                                 <label>Nombre de radiografia</label>
-                                <obs id="name{0}" class="image-name" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="2f7f8cb6-b801-4afb-ac88-371cd62eed7f"/>
+                                <obs id="name{0}" class="image-name" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
                             </p>
                         </fieldset>
                 </span>
