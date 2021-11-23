@@ -34,7 +34,7 @@
   "visitsPageUrl": "/pihcore/visit/visit.page?patient={{patient.uuid}}#/visitList",
   "visitsPageWithSpecificUrl": "/pihcore/visit/visit.page?patient={{patient.uuid}}&visit={{visit.uuid}}#/overview",
   "providerIdentifierPrefix": "P",
-  "primaryIdentifierPrefix": "SES",
+  "primaryIdentifierPrefix": "COR-",
   "addressConfig": {
     "manualFields": ["address1"],
     "shortcutField": "cityVillage"
