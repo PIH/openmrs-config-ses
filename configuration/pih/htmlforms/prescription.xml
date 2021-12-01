@@ -53,7 +53,7 @@
         }
             <!--Media print specified for this page-->
 
-            @media print 
+            @media print
             {
                 .navbar {
                     display: block;
@@ -129,7 +129,6 @@
     <ifMode mode="VIEW" include="false">
 
         <script type="text/javascript">
-            var $j = jQuery;
 
             jq(document).ready(function() {
 
@@ -145,7 +144,7 @@
             });
         </script>
     </ifMode>
-    
+
     <div class="hidden" id="encounter-details">
         <encounterDate id="encounterDate" default="now"/>
         <encounterProviderAndRole default="currentUser" encounterRole="4f10ad1a-ec49-48df-98c7-1391c6ac7f05" required="true"/>
