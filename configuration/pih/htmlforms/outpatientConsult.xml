@@ -383,17 +383,17 @@
     <section id="diagnostico" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="Diagnosis">
             <div class="diagnosis-section">
                 <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
-                    <span id="diagnosis-{0}" class="diagnosis">
+                    <span id="diagnosis-{0}">
                         <obsgroup groupingConceptId="PIH:Visit Diagnoses">
                             <h3>
                                 <uimessage code="Diagnostico"/>
                                 {0}
                             </h3>
-                            <fieldset class="diagnosis-field">
+                            <fieldset>
                                 <p class="field-error" style="display:none"></p>
                                 <p>
                                     <label>Nombre del diagnostico</label>
-                                    <obs id="name{0}" class="diagnosis-name" conceptId="PIH:DIAGNOSIS" style="autocomplete" answerConceptSetIds="34280962-a42d-43e1-a6bd-fcff6c31f7e3"/>
+                                    <obs id="name{0}" conceptId="PIH:DIAGNOSIS" style="autocomplete" answerConceptSetIds="34280962-a42d-43e1-a6bd-fcff6c31f7e3"/>
                                 </p>
                                 <p class="inline-diagnosis">
                                     <obs id="confirmation{0}" class="confirmation-radio Input" conceptId="PIH:CLINICAL IMPRESSION DIAGNOSIS CONFIRMED" style="radio" answerConceptIds="PIH:CONFIRMED,PIH:PRESUMED,CIEL:1688" answerLabels="Definitivo,Probable,Repetido"/>
@@ -424,16 +424,16 @@
         <section id="laboratorio" sectionTag="fieldset" headerTag="legend" headerStyle="title" headerCode="Laboratorio">
                 <div id="tests-section">
                     <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
-                        <span id="tests-{0}" class="tests">
+                        <span id="tests-{0}">
                                 <h3>
                                     <uimessage code="Examen de laboratorio"/>
                                     {0}
                                 </h3>
-                                <fieldset class="tests-field">
+                                <fieldset>
                                     <p class="field-error" style="display:none"></p>
                                     <p>
                                         <label>Nombre</label>
-                                        <obs id="name{0}" class="tests-name" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
+                                        <obs id="name{0}"conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
                                     </p>
                                 </fieldset>
                         </span>
@@ -450,16 +450,16 @@
             <div class="section-container-color">
                 <div id="image-section">
                     <repeat with="['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8']">
-                        <span id="image-{0}" class="image">
+                        <span id="image-{0}">
                                 <h3>
                                     <uimessage code="Radiografia"/>
                                     {0}
                                 </h3>
-                                <fieldset class="image-field">
+                                <fieldset>
                                     <p class="field-error" style="display:none"></p>
                                     <p>
                                         <label>Nombre</label>
-                                        <obs id="name{0}" class="image-name" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="SES_IMAGENES:COR_IMAGEN"/>                        
+                                        <obs id="name{0}" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="SES_IMAGENES:COR_IMAGEN"/>                        
                                     </p>
                                 </fieldset>
                         </span>
