@@ -433,7 +433,7 @@
                                     <p class="field-error" style="display:none"></p>
                                     <p>
                                         <label>Nombre</label>
-                                        <obs id="name{0}"conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
+                                        <obs id="name{0}" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
                                     </p>
                                 </fieldset>
                         </span>
