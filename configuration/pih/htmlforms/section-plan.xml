@@ -198,7 +198,7 @@
                             <p class="field-error" style="display:none"></p>
                             <p>
                                 <label>Nombre de examen</label>
-                                <obs id="name{0}" class="tests-name" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES_IMAGENES:COR_IMAGEN"/>
+                                <obs id="name{0}" class="tests-name" conceptId="PIH:10745" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
                             </p>
                         </fieldset>
                 </span>
@@ -227,7 +227,7 @@
                             <p class="field-error" style="display:none"></p>
                             <p>
                                 <label>Nombre de radiografia</label>
-                                <obs id="name{0}" class="image-name" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="SES Lab:Exam_set"/>
+                                <obs id="name{0}" class="image-name" conceptId="PIH:11447" style="autocomplete" answerConceptSetIds="SES_IMAGENES:COR_IMAGEN"/>                        
                             </p>
                         </fieldset>
                 </span>
