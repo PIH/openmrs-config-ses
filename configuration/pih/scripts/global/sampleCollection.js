@@ -1,4 +1,4 @@
-jQuery(($) => {
+$(() => {
 	(async () => {
 	  // Sección: Arreglo de UI
 	  document.querySelector("#iframe > legend").innerText = "Solicitud de Análisis";
