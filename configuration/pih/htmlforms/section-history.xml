@@ -79,7 +79,7 @@
         width: 100%;
         }
 
-        @media print 
+        @media print
             {
                 .navbar {
                     display: block;
@@ -203,21 +203,6 @@
                         validateFamHistoryText(jq(this));
                     });
 
-                    // handle our custom functionality for triggering going to the next section when the "Next" button is clicked
-                    jq('#next').click(function() {
-                        window.htmlForm.getBeforeSubmit().push(function () {
-                            window.htmlForm.setReturnUrl(window.htmlForm.getReturnUrl() + "&amp;goToNextSection=pihcore-history");
-                            return true;
-                        });
-
-                        window.htmlForm.submitHtmlForm();
-                    })
-
-                    jq('#submit').click(function() {
-                        window.htmlForm.submitHtmlForm();
-                    })
-
-
                     beforeSubmit.push(function() {
                         var numErrors = 0;
                         jq('.medicalHistoryText').find('input[type=text]').each(function() {
@@ -228,7 +213,10 @@
                         return ( numErrors == 0 );
                     });
 
-                });
+                    // handlers for next and submit buttons, see nextAndSubmitButtons.js
+                    setUpNextAndSubmitButtons();
+
+            });
         </script>
     </ifMode>
 
@@ -362,7 +350,7 @@
                                             specify="true" class="medicalHistoryText patientHistory"/>
                 <pastMedicalHistoryCheckbox concept="PIH:MALNUTRITION"/>
                 <pastMedicalHistoryCheckbox concept="PIH:MEASLES"/>
-                
+
                 <pastMedicalHistoryCheckbox concept="PIH:VARICELLA"/>
                 <pastMedicalHistoryCheckbox concept="PIH:Diphtheria"/>
                 <pastMedicalHistoryCheckbox concept="PIH:ACUTE RHEUMATIC FEVER" label="pihcore.acuteRheumaticFever.abbrev"/>
@@ -387,10 +375,10 @@
             <familyHistoryRelativeCheckboxes concept="PIH:DIABETES" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
             <familyHistoryRelativeCheckboxes concept="PIH:HYPERTENSION" label="pihcore.medicalhistory.hypertension"
                                              relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            <familyHistoryRelativeCheckboxes concept="PIH:HEART DISEASE" label="pihcore.ncd.heartdisease" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>                                 
+            <familyHistoryRelativeCheckboxes concept="PIH:HEART DISEASE" label="pihcore.ncd.heartdisease" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
             <familyHistoryRelativeCheckboxes concept="PIH:TUBERCULOSIS" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
             <familyHistoryRelativeCheckboxes concept="PIH:ASTHMA" relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
-            
+
             <familyHistoryRelativeCheckboxes concept="CIEL:117635" comment="Hémoglobinopathie"
                                              relatives="PIH:FATHER,PIH:MOTHER,PIH:SIBLING,PIH:OTHER"/>
             <br/>

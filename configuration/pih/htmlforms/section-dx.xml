@@ -26,7 +26,7 @@
             .hasDatepicker {
                 min-width: 100%;
             }
-            
+
             .diagnosis-field {
                 display: block;
                 margin-bottom: 10px;
@@ -51,7 +51,7 @@
             }
             <!--Media print specified for this page-->
 
-            @media print 
+            @media print
             {
                 .navbar {
                     display: block;
@@ -128,21 +128,8 @@
 
         <script type="text/javascript">
             jq(document).ready(function() {
-
-                // handle our custom functionality for triggering going to the next section when the "Next" button is clicked
-                jq('#next').click(function() {
-                    window.htmlForm.getBeforeSubmit().push(function () {
-                        window.htmlForm.setReturnUrl(window.htmlForm.getReturnUrl() + "&amp;goToNextSection=pihcore-diagnosis");
-                        return true;
-                    });
-
-                    window.htmlForm.submitHtmlForm();
-                })
-
-                jq('#submit').click(function() {
-                    window.htmlForm.submitHtmlForm();
-                })
-
+                // handlers for next and submit buttons, see nextAndSubmitButtons.js
+                setUpNextAndSubmitButtons();
             });
 
             jq(function(){
